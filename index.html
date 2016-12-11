@@ -1,23 +1,34 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
 
-<div class="home">
+	<style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+	#map {
+		height: 100%;
+	}
+      /* Optional: Makes the sample page fill the window. */
+	html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+	}
+    </style>
+</head>
+<body>
 
-  <h1 class="page-heading">Posts</h1>
+<!--O elemento "canvas"" tem que ser criado no HTML antes do "script" ser criado/corrido-->
+<!--Desta forma quando o "script" correr o canvas já lá está disponível-->
+<!--Todos devem ficar dentro do Body-->
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+<div id="map"></div>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+<script type="text/javascript" src="utils.js"></script>
+<script type="text/javascript" src="script.js"></script>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcUf3WWJJRdgEp-y4myyJtl8YGJKIoljc&callback=init_Map"></script>
 
-</div>
+</body>
+</html>
