@@ -33,6 +33,7 @@ function asteroid(x, y, rad) {
         for (var i = 0; i < blocks; i++) {
             Asteroids.push(new asteroid(this.position.getX(), this.position.getY(), this.radius / 1.25));
         };
+        AsteroidsGenerated += blocks;
     };
 
     // Evitar que a nave saia do ecra voltando a coloca-la no outro lado quando sair

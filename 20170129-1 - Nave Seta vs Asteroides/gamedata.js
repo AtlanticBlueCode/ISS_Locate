@@ -2,7 +2,7 @@
 function showData() {                        // Indicar dados sobre a ship
 
     context.fillStyle = 'rgba(255, 255, 255,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
-    context.fillRect(0, 0, 200, 250); //limpar bem zona de dados  
+    context.fillRect(0, 0, 200, 300); //limpar bem zona de dados  
 
     context.fillStyle = 'black';
 
@@ -22,14 +22,20 @@ function showData() {                        // Indicar dados sobre a ship
     context.fillText("Turning Left?: " + Ship_A.turningLeft, 0, 140);
     context.fillText("Turning Right?: " + Ship_A.turningRight, 0, 150);
 
-    context.fillText("Live Asteroids?: " + Asteroids.length, 0, 170);
+    context.fillText("Initial Live Asteroids: " + InitialLiveAsteroids, 0, 170);
+    context.fillText("Highest Asteroid Count: " + HighLiveAsteroids, 0, 180);
+    context.fillText("Unique Asteroids Generated: " + AsteroidsGenerated, 0, 190);
+    context.fillText("Current Live Asteroids: " + Asteroids.length, 0, 200);
 
-    context.fillText("Live Laser Shots?: " + Lasers.length, 0, 190);
-    context.fillText("Live Missle Shots?: " + Missiles.length, 0, 200);
+    context.fillText("Laser Shots Fired: " + LasersFiredCount, 0, 220);
+    context.fillText("Current Live Laser Shots: " + Lasers.length, 0, 230);
 
-    context.fillText("SCORE: " + Math.floor(Score), 0, 220);
+    context.fillText("Missiles Fired: " + MissilesFiredCount, 0, 250);
+    context.fillText("Current Live Missile Shots: " + Missiles.length, 0, 260);
 
-    context.fillText("Start ?: " + GameStart, 0, 240);
+    context.fillText("SCORE: " + Math.floor(Score), 0, 280);
+
+    context.fillText("Start ?: " + GameStart, 0, 300);
 
 };
 

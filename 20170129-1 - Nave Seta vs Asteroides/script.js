@@ -54,17 +54,21 @@ var ScoreLogged = false;
 var Ship_A = new ship(width / 2, heigth / 2, 0, Math.PI * 1.5, 0);
 
 var Asteroids = [];
-var numAsteroids = 10;
-for (var i = 0; i < numAsteroids; i++) {
+var HighLiveAsteroids = 0;
+var InitialLiveAsteroids = 10;
+var AsteroidsGenerated = InitialLiveAsteroids;
+for (var i = 0; i < InitialLiveAsteroids; i++) {
     Asteroids.push(new asteroid());
 };
 
 var Lasers = [];
-var maxLiveLasers = 1;
+var MaxLiveLasers = 1;
+var LasersFiredCount = 0;
 var LaserFired = false;
 
 var Missiles = [];
-var maxLiveMissiles = 1;
+var MaxLiveMissiles = 1;
+var MissilesFiredCount = 0;
 var MissileFired = false;
 var MissileDetonated = false;
 
@@ -76,7 +80,7 @@ var Player = prompt("Nome ?");
 
 
 function clearScreen() {                         // Limpeza de ecra para rendering    
-    context.fillStyle = 'rgba(255, 255, 255, .35)'; // para criar efeito fade pinto todo o canvas deixando um opacity 0.15
+    context.fillStyle = 'rgba(255, 255, 255,1)'; // para criar efeito fade pinto todo o canvas deixando um opacity 0.15
     context.fillRect(0, 0, canvas.width, canvas.height); //limpar o canvas todo no inicio da nova frame
 };
 
@@ -94,8 +98,9 @@ function loop() {
         console.log("Ganhaste!")
     };
     
-    if (MissileFired == true && Missiles.length < maxLiveMissiles) {
+    if (MissileFired == true && Missiles.length < MaxLiveMissiles) {
         Missiles.push(new missile(Ship_A.position.getX(), Ship_A.position.getY(), Ship_A.maxVelocity * 0.25, Ship_A.bearing.getAngle()));
+        MissilesFiredCount++;
     };
 
     for (var i = Missiles.length - 1; i >= 0; i--) {
@@ -120,8 +125,9 @@ function loop() {
     };
 
 
-    if (LaserFired == true && Lasers.length < maxLiveLasers) {
+    if (LaserFired == true && Lasers.length < MaxLiveLasers) {
         Lasers.push(new laser(Ship_A.position.getX(), Ship_A.position.getY(), Ship_A.maxVelocity * 1.5, Ship_A.bearing.getAngle()));
+        LasersFiredCount++;
     };
 
     // avançar os Lasers ja existentes, desenha-los e ver se atingem alvos   
@@ -160,6 +166,8 @@ function loop() {
         Asteroids[i].draw();
     };
 
+    if (Asteroids.length > HighLiveAsteroids) { HighLiveAsteroids = Asteroids.length };   
+    
     if (Ship_A.hit !== true) {
         Ship_A.accelerate();
         Ship_A.update(); //actualizar vector de posicao e movimento
