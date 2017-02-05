@@ -14,16 +14,28 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
+// Obter Pais e Regiao através do ip-api.com
+function CountryFromIP(json) {
+    // Obter Pais e Regiao
+    Country = json.country;
+    Region = json.regionName;
+    console.log(Country);
+    console.log(Region);
+}  
+
+
 function writePlayerScore(Player, Score) {
 
     // Obter a Data e Hora
     var Moment = new Date().toISOString().substr(0, 19).replace('T', ' @ ');
 
     // Registo que se pretende adicionar à BD em formato JSON    
-    var record = {
+    LatestRecord = {
         player: Player,
         score: Score,
-        time: Moment
+        time: Moment,
+        country: Country,
+        region: Region
     }
 
     // Local na BD onde quero guardar o registo (depende da forma como quero estruturar a BD)
@@ -32,23 +44,21 @@ function writePlayerScore(Player, Score) {
     // Guardar o registo
     // usando o 'set' ele esmaga um existente ou cria novo se nao existe ainda
     // usando o 'push' ele adiciona um novo à BD
-    entry.push(record);
-
+    entry.push(LatestRecord);
+    
     console.log ("Score Logged!")
-
 }
 
+// funcao callback que activa a função 'gotDataPlayers' sempre que há uma alteração 'value' na BD abaixo do ramo 'Players'
+database.ref('Players/').on('value', gotDataPlayers);
 
-// funcao callback que activa as funções 'gotData' ou 'errData' sempre que há uma alteração 'value' na BD abaixo do ramo 'Players'
-database.ref('Players/').on('value', gotDataPlayers, errorDataPlayers);
-
-// funcao 'gotData' recupera snapshot da BD abaixo de 'Players' e devolve-a como "Object" e como "Array de Objectos" 
+// funcao 'gotDataPlayers' recupera snapshot da BD abaixo de 'Players' e devolve-a como "Object" e como "Array de Objectos" 
 function gotDataPlayers(data) {
     // Object com a snapshot dos dados
     var DataPlayersObject = data.val();
     console.log(DataPlayersObject);
 
-    // Conversao do Object em Array com a snapshot dos dados    
+    // Conversao do Object em Array com a snapshot dos dados
     DataPlayersArray = Object.keys(DataPlayersObject).map(x=>DataPlayersObject[x]);
     console.log(DataPlayersArray);
 
@@ -56,12 +66,6 @@ function gotDataPlayers(data) {
     if (GameOver == true) {
         displayScores();
     };
-
-}
-
-function errorDataPlayers(error) {
-    console.log("Error!");
-    console.log(error);
 }
 
 
@@ -69,16 +73,22 @@ function displayScores() {
 
     // Fundo Branco para zona dos HighScores    
     context.fillStyle = 'rgba(255, 255, 255,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
-    context.fillRect(width-400, 0,width , 200); //limpar bem zona de dados  
+    context.fillRect(width-500, 0,width , 200); //limpar bem zona de dados  
 
     // Cabeçalho
     context.fillStyle = 'darkblue';
     context.font = "15px Arial";
 
-    context.fillText('Rank', width-400, 20 );
-    context.fillText('Player', width-400+75, 20 );
-    context.fillText('Score', width-400+150, 20 );
-    context.fillText('Date / Time', width-400+225, 20 );
+    var PlayerStart = 50;    
+    var CountryStart = 110;    
+    var ScoreStart = 245;    
+    var DateTimeStart = 300;    
+    
+    context.fillText('Rank', width-500, 20 );
+    context.fillText('Player', width-500+PlayerStart, 20 );
+    context.fillText('Country', width-500+CountryStart, 20 );
+    context.fillText('Score', width-500+ScoreStart, 20 );
+    context.fillText('Date / Time', width-500+DateTimeStart, 20 );
 
     // Pontuações Top 10 Ranked por Score
     context.font = "10px Arial";
@@ -88,15 +98,29 @@ function displayScores() {
     var topDisplay = Math.min(SortedDataPlayersArray.length, 10);
     
     for (var i = 0; i <topDisplay; i++) {
-        context.fillText(i+1, width-400, 40 + i * 10);
-        context.fillText(SortedDataPlayersArray[i].player, width-400+75, 40 + i * 10);
-        context.fillText(SortedDataPlayersArray[i].score, width-400+150, 40 + i * 10);
-        context.fillText(SortedDataPlayersArray[i].time, width-400+225, 40 + i * 10);
+        context.fillText(i+1, width-500, 40 + i * 10);
+        context.fillText(SortedDataPlayersArray[i].player, width-500+PlayerStart, 40 + i * 10);
+        context.fillText(SortedDataPlayersArray[i].country+' - '+SortedDataPlayersArray[i].region, width-500+CountryStart, 40 + i * 10);
+        context.fillText(SortedDataPlayersArray[i].score, width-500+ScoreStart, 40 + i * 10);
+        context.fillText(SortedDataPlayersArray[i].time, width-500+DateTimeStart, 40 + i * 10);
     }
 
+    for (var i = 0; i < SortedDataPlayersArray.length; i++) {
+        if (SortedDataPlayersArray[i].time == LatestRecord.time) { LatestRecordIndex = i+1 };
+    }
+    console.log(LatestRecordIndex)
+    
+    // Pontuação deste jogo   
+    context.fillText(LatestRecordIndex, width-500, 40 + topDisplay * 10 +10);
+    context.fillText(LatestRecord.player, width-500+PlayerStart, 40 +  topDisplay * 10 +10);
+    context.fillText(LatestRecord.country+' - '+LatestRecord.region, width-500+CountryStart, 40 +  topDisplay * 10 +10);
+    context.fillText(LatestRecord.score, width-500+ScoreStart, 40 +  topDisplay * 10 +10);
+    context.fillText(LatestRecord.time, width-500+DateTimeStart, 40 +  topDisplay * 10 +10);    
+    
     // Pontuação do Último da BD   
-    context.fillText(SortedDataPlayersArray.length, width-400, 40 + topDisplay * 10 +10);
-    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].player, width-400+75, 40 +  topDisplay * 10 +10);
-    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].score, width-400+150, 40 +  topDisplay * 10 +10);
-    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].time, width-400+225, 40 +  topDisplay * 10 +10);    
+    context.fillText(SortedDataPlayersArray.length, width-500, 40 + topDisplay * 10 +30);
+    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].player, width-500+PlayerStart, 40 +  topDisplay * 10 +30);
+    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].country+' - '+SortedDataPlayersArray[SortedDataPlayersArray.length-1].region, width-500+CountryStart, 40 +  topDisplay * 10 +30);
+    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].score, width-500+ScoreStart, 40 +  topDisplay * 10 +30);
+    context.fillText(SortedDataPlayersArray[SortedDataPlayersArray.length-1].time, width-500+DateTimeStart, 40 +  topDisplay * 10 +30);    
 };
