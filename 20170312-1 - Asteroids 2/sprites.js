@@ -15,7 +15,7 @@ function drawGameMenu() {
 
 // Starfield
 var starfieldImage = new Image(); // Cria nova Imagem
-starfieldImage.src = "Assets/backgrounds/Starfield5.jpg"; // Define ficheiro fonte para a Imagem
+starfieldImage.src = "Assets/backgrounds/Starfield5-Small.jpg"; // Define ficheiro fonte para a Imagem
 
 function drawStarfield() {
     context.drawImage( // Desenhar frame da sprite sheet
