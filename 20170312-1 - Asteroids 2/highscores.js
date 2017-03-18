@@ -13,12 +13,14 @@ firebase.initializeApp(FirebaseConfig);
 // Get a reference to the database service
 var database = firebase.database();
 
+var Country;
+var Region;
 
 // Obter Pais e Regiao através do ip-api.com
 function CountryFromIP (json) {
     // Obter Pais e Regiao
-    Country = json.country ||"Not Available";
-    Region = json.regionName||"Not Available";
+    Country = json.country;
+    Region = json.regionName;
     console.log(Country);
     console.log(Region);
 }  
@@ -32,8 +34,8 @@ function writePlayerScore(Player, Score) {
         player: Player,
         score: Score,
         time: Moment,
-        country: Country,
-        region: Region
+        country: Country || "Not Available",
+        region: Region||"Not Available"
     }
     // Local na BD onde quero guardar o registo (depende da forma como quero estruturar a BD)
     var entry = database.ref('Players/')
