@@ -17,8 +17,8 @@ var database = firebase.database();
 // Obter Pais e Regiao através do ip-api.com
 function CountryFromIP (json) {
     // Obter Pais e Regiao
-    Country = json.country;
-    Region = json.regionName;
+    Country = json.country ||"Not Available";
+    Region = json.regionName||"Not Available";
     console.log(Country);
     console.log(Region);
 }  
