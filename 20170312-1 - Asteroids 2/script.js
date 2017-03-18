@@ -51,7 +51,7 @@ function initialize() {
 
 	Asteroids = [];
 	HighLiveAsteroids = 0;
-	InitialLiveAsteroids = 10;
+	InitialLiveAsteroids = 1;
 	AsteroidsGenerated = InitialLiveAsteroids;
 	for (var i = 0; i < InitialLiveAsteroids; i++) {
 		Asteroids.push(new asteroid());
