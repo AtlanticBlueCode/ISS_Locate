@@ -51,7 +51,7 @@ function initialize() {
 
 	Asteroids = [];
 	HighLiveAsteroids = 0;
-	InitialLiveAsteroids = 1;
+	InitialLiveAsteroids = 10;
 	AsteroidsGenerated = InitialLiveAsteroids;
 	for (var i = 0; i < InitialLiveAsteroids; i++) {
 		Asteroids.push(new asteroid());
@@ -78,12 +78,18 @@ function initialize() {
 document.body.addEventListener("keydown", keyDown);
 document.body.addEventListener("keyup", keyUp);
 
+
+// Atribuir os forms iniciais a Objectos Javascript
+var NameText = document.getElementById("PlayerNameText");
+var NameButton = document.getElementById("PlayerNameButton");
+
+// Pre-seleccionar a caixa de texto de input do Nome quando a página fica carregada
+NameText.select();
+
 // Obter os valores preenchidos no form do menu inicial
 // Criar event listeners para mouse click ou tecla enter nos menus iniciais
 // Avançar para start() quando se pressiona Enter ou clica
-var NameText = document.getElementById("PlayerNameText");
 NameText.addEventListener("keydown", function (event) { if (event.keyCode == 13) { start() } });
-var NameButton = document.getElementById("PlayerNameButton");
 NameButton.addEventListener("click", start);
 
 // Iniciar jogo novo
