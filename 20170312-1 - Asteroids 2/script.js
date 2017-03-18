@@ -58,7 +58,7 @@ function initialize() {
 	};
 
 	Lasers = [];
-	MaxLiveLasers = 2;
+	MaxLiveLasers = 1000;
 	LasersFiredCount = 0;
 	LaserFired = false;
 
