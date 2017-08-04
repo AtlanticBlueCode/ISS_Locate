@@ -11,7 +11,7 @@
 }
 
 @media screen 
-  and (max-width: 736px) {
+  and (max-width: 836px) {
   .wrapper {
     display:grid;
     background: black;
