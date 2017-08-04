@@ -1,27 +1,27 @@
 .wrapper {
   display: grid;
   background: black;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: auto auto auto;
-  grid-template-areas:  "header header"
-                        "image biography" 
-                        "reference footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas:  "header" 
+    "image" 
+    "biography" 
+    "reference" 
+    "footer";
+  grid-gap: 00px;
+  grid-gap: 10px;
   font-family: "Calibri", arial, sans-serif;
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (min-width: 736px) {
   .wrapper {
     display: grid;
     background: black;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto auto auto;
-    grid-template-areas:  "header" 
-                          "image" 
-                          "biography" 
-                          "reference" 
-                          "footer";
-    grid-gap: 00px;
-    grid-gap: 10px;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:  "header header"
+                          "image biography" 
+                          "reference footer";
     font-family: "Calibri", arial, sans-serif;
   }
 }
