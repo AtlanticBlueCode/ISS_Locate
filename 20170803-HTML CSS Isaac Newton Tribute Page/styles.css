@@ -13,7 +13,7 @@
   font-family: "Calibri", arial, sans-serif;
 }
 
-@media screen and (min-width: 736px) {
+@media only screen and (min-width: 736px) {
   .wrapper {
     display: grid;
     background: black;
