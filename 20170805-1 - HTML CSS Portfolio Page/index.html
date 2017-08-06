@@ -16,10 +16,10 @@
   <div id="header" class="header">
     <div id="siteName" class="siteName">Atlantic Blue Code</div>
     <div id="navbar" class="navbar">
-      <a href="#home">Home</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a>
+      <a onclick="window.scrollBy({ top: ElementIdCoordY ('home'), left: 0, behavior: 'smooth' });">Home</a>
+      <a onclick="window.scrollBy({ top: ElementIdCoordY ('portfolio'), left: 0, behavior: 'smooth' });">Portfolio</a>
+      <a onclick="window.scrollBy({ top: ElementIdCoordY ('contact'), left: 0, behavior: 'smooth' });">Contact</a>
+      <a onclick="window.scrollBy({ top: ElementIdCoordY ('about'), left: 0, behavior: 'smooth' });">About</a>
     </div>
   </div>
 
@@ -62,6 +62,9 @@
     </div>
     <div id="empty" class="empty"></div>
   </div>
+
+ <script src="script.js"></script>
+ <script src="smoothscroll.js"></script>
 
 </body>
 </html>
