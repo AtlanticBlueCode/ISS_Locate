@@ -1,0 +1,162 @@
+.site {
+  font-family: "Calibri", arial, sans-serif;
+  margin: 90px 0px 0px 0px;
+}
+
+h1{
+  font-size: 24px;
+}
+
+.header {
+  position:fixed;   /*Necessario para fixar a barra*/
+  top:0;            /*Necessario para que se fixe no topo*/
+  width: 100%;      /*Necessario para que cubra toda a extensao da página*/
+  
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "siteName"
+    "navbar";
+  
+  font-weight: bold;
+  color: white;
+  background: rgb(0,32,96);
+  
+  z-index:130;
+}
+
+.siteName {
+  grid-area: siteName;
+  font-size: 24px;
+  text-align: left;
+  padding: 10px;
+}
+
+.navbar {
+  grid-area: navbar;
+  display:grid;
+  grid-template-columns: 80px 105px 95px 80px;
+}
+
+a {
+    color: white;
+    align-self: center;
+    text-align: left;
+    padding: 10px;
+    text-decoration: none;  /*tirar o sublinhado de hyperlink*/
+    font-size: 16px;
+}
+
+a:hover {
+  color: rgb(0,32,96);
+  background: white;
+}
+
+
+.wrapper {
+  margin: 0px 0px 0px 0px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 
+    auto 
+    auto 
+    auto 
+    auto 
+    auto
+    auto;
+  grid-template-areas:
+    "home" 
+    "portfolio" 
+    "contact" 
+    "about"
+    "empty";
+  grid-gap: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.home {
+  grid-area: home;
+  color: lightblue;
+  background: rgb(31,61,126);
+  padding: 10px;
+  text-align: justify;
+  
+  padding-top: 90px; 
+  margin-top: -90px;
+  z-index:20;
+}
+
+/*
+.image {
+  grid-area: image;
+  padding: 20px;
+}
+
+.imagePicture {
+  max-width: 100%;
+  border-radius: 3px;
+}
+*/
+
+.portfolio {
+  grid-area: portfolio;
+  color: silver;
+  background: rgb(46,117,182);
+  padding: 10px;
+  
+  padding-top: 90px; 
+  margin-top: -90px;
+  z-index:10;
+}
+
+.contact {
+  grid-area: contact;
+  color: navy;
+  background: rgb(157,195,230);
+  padding: 10px;
+
+  padding-top: 90px; 
+  margin-top: -90px;
+  z-index:9;
+}
+
+.about {
+  grid-area: about;
+  color: navy;
+  background: rgb(189,215,238);
+  padding: 10px;
+  
+  padding-top: 90px; 
+  margin-top: -90px;
+  z-index:8;
+}
+
+.empty {
+  grid-area: empty;
+  background: white;
+  padding-bottom: 500px;
+}
+/*
+@media screen 
+  and (min-width: 736px)
+  and (min-device-width: 736px) {
+  .site {
+    font-family: "Calibri", arial, sans-serif;
+    margin: 64px 0px 0px 0px;
+}
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-template-areas:"siteName navbar";
+
+    position:fixed;   /*Necessario para fixar a barra
+    top:0;            /*Necessario para que se fixe no topo
+    width: 100%;      /*Necessario para que cubra toda a extensao da página
+
+    font-weight: bold;
+    color: lightblue;
+    font-size: 24px
+  }
+}
+*/
