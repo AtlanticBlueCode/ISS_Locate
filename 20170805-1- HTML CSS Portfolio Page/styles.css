@@ -103,8 +103,8 @@ a:hover {
 
 .portfolio {
   grid-area: portfolio;
-  color: silver;
-  background: rgb(46,117,182);
+  color: navy;
+  background: rgb(189,215,238);
   padding: 10px;
   
   padding-top: 74px; 
@@ -115,7 +115,7 @@ a:hover {
 .contact {
   grid-area: contact;
   color: navy;
-  background: rgb(157,195,230);
+  background: rgb(189,215,238);
   padding: 10px;
 
   padding-top: 74px; 
