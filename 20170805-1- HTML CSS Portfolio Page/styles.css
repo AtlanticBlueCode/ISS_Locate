@@ -29,7 +29,8 @@ h1{
   grid-area: siteName;
   font-size: 24px;
   text-align: left;
-  padding: 10px;
+  padding: 5px;
+  padding-left:10px;
 }
 
 .navbar {
@@ -42,9 +43,10 @@ a {
     color: white;
     align-self: center;
     text-align: left;
-    padding: 10px;
+    padding: 5px;
+    padding-left:10px;
     text-decoration: none;  /*tirar o sublinhado de hyperlink*/
-    font-size: 16px;
+    font-size: 020px;
 }
 
 a:hover {
@@ -82,8 +84,8 @@ a:hover {
   padding: 10px;
   text-align: justify;
   
-  padding-top: 90px; 
-  margin-top: -90px;
+  padding-top: 74px; 
+  margin-top: -74px;
   z-index:20;
 }
 
@@ -105,8 +107,8 @@ a:hover {
   background: rgb(46,117,182);
   padding: 10px;
   
-  padding-top: 90px; 
-  margin-top: -90px;
+  padding-top: 74px; 
+  margin-top: -74px;
   z-index:10;
 }
 
@@ -116,8 +118,8 @@ a:hover {
   background: rgb(157,195,230);
   padding: 10px;
 
-  padding-top: 90px; 
-  margin-top: -90px;
+  padding-top: 74px; 
+  margin-top: -74px;
   z-index:9;
 }
 
@@ -127,8 +129,8 @@ a:hover {
   background: rgb(189,215,238);
   padding: 10px;
   
-  padding-top: 90px; 
-  margin-top: -90px;
+  padding-top: 74px; 
+  margin-top: -74px;
   z-index:8;
 }
 
