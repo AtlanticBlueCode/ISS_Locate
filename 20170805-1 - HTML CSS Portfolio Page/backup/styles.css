@@ -1,15 +1,6 @@
-h1{
-    font-size: 24px;
-    margin: 0px;
-}
-
-p {
-    font-size: 16px;
-}
-  
 .site {
   font-family: "Calibri", arial, sans-serif;
-  margin:80px 0px 0px 0px;
+  margin:84px 0px 0px 0px;
 }
 
 .header {
@@ -26,6 +17,8 @@ p {
   font-weight: bold;
   color: white;
   background: rgb(0,32,96);
+  
+  z-index:130;
 }
 
 .siteName {
@@ -46,8 +39,6 @@ a {
     align-self: center;
     text-align: left;
     padding: 10px;
-    padding-top:5px;
-    padding-bottom:5px;
     text-decoration: none;  /*tirar o sublinhado de hyperlink*/
     font-size: 18px;
 }
@@ -79,6 +70,8 @@ a:hover {
   padding: 0px;
   margin: 0px;
   text-align: left;
+  font-size: 16px;
+
 }
 
 .home {
@@ -86,6 +79,10 @@ a:hover {
   color: lightblue;
   background: rgb(31,61,126);
   padding: 10px;
+  
+  padding-top: 74px; 
+  margin-top: -74px;
+  z-index:20;
 }
 
 /*
@@ -105,6 +102,10 @@ a:hover {
   color: navy;
   background: rgb(189,215,238);
   padding: 10px;
+  
+  padding-top: 74px; 
+  margin-top: -74px;
+  z-index:10;
 }
 
 .contact {
@@ -112,6 +113,10 @@ a:hover {
   color: lightblue;
   background: rgb(31,61,126);
   padding: 10px;
+
+  padding-top: 74px; 
+  margin-top: -74px;
+  z-index:9;
 }
 
 .about {
@@ -119,6 +124,10 @@ a:hover {
   color: navy;
   background: rgb(189,215,238);
   padding: 10px;
+  
+  padding-top: 74px; 
+  margin-top: -74px;
+  z-index:8;
 }
 
 .empty {
