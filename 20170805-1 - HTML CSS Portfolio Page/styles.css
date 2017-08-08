@@ -118,7 +118,7 @@ a:hover {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(150px,auto));
-  border:5px solid black;
+  /*border:5px solid black;*/
   justify-items: center;
   align-items: start;
 
@@ -126,7 +126,7 @@ a:hover {
 
 .box{
   text-align: center;
-  border: 5px solid navy;
+/*  border: 5px solid navy;*/
   background-color: rgb(0,32,96);
   color: white;
   border-radius: 5px;
