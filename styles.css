@@ -1,0 +1,232 @@
+h1{
+    font-size: 24px;
+    margin: 0px;
+    margin-bottom: 10px;
+            font-style: italic;
+
+}
+
+p {
+    font-size: 16px;
+}
+
+a {
+    color: white;
+    align-self: center;
+    text-align: left;
+    padding: 10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    text-decoration: none;  /*tirar o sublinhado de hyperlink*/
+    font-size: 18px;
+}
+
+a:hover {
+  color: rgb(0,32,96);
+  background: white;
+}
+
+a:active {
+  color: white;
+  background: indigo;
+}
+
+
+  
+.site {
+  font-family: "Calibri", arial, sans-serif;
+  margin:80px 0px 0px 0px;
+}
+
+  .header {
+    position:fixed;   /*Necessario para fixar a barra*/
+    top:0;            /*Necessario para que se fixe no topo*/
+    width: 100%;      /*Necessario para que cubra toda a extensao da página*/
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "siteName"
+      "navbar";
+    
+    font-weight: bold;
+    color: white;
+    background: rgb(0,32,96);
+  }
+
+    .siteName {
+      grid-area: siteName;
+      font-size: 24px;
+      text-align: left;
+      padding: 10px;
+    }
+
+    .navbar {
+      grid-area: navbar;
+      display:grid;
+      grid-template-columns: 70px 95px 85px 70px;
+      font-style: italic;
+    }
+
+
+  .wrapper {
+    margin: 0px;
+    padding: 0px;
+    
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 
+      auto 
+      auto 
+      auto 
+      auto
+      auto;
+    grid-template-areas:
+      "home" 
+      "portfolio" 
+      "contact" 
+      "about"
+      "empty";
+    grid-gap: 0px;
+    
+    text-align: left;
+  }
+
+  .home {
+    grid-area: home;
+
+    color: lightblue;
+    background: rgb(31,61,126);
+    padding: 10px;
+  }
+
+  /*
+  .image {
+    grid-area: image;
+    padding: 20px;
+  }
+
+  .imagePicture {
+    max-width: 100%;
+    border-radius: 3px;
+  }
+  */
+
+  .portfolio {
+    /*border:5px solid orange;*/
+    grid-area: portfolio;
+    color: rgb(0,32,96);
+    background: rgb(189,215,238);
+    padding: 10px;
+  }
+
+    .Projects_Grid{
+      /*border:5px solid yellow;*/
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(auto,420px));
+      grid-gap: 20px;
+      align-items: start;
+      justify-content:space-around;
+    }
+
+      .Sub_Projects_Grid{
+        /*border:5px solid green;*/
+        display: grid;
+        grid-gap: 10px;
+        grid-template-rows:2;
+        padding: 0px;
+
+      }
+
+        .sub_projects_header{
+          border:1px solid black;
+          grid-row:1;
+          justify-self: stretch;
+          text-align: center;
+          background-color: white;
+          color: rgb(0,32,96);
+          font-style: italic;
+          font-weight: bold;
+          border-radius: 5px;
+          padding: 5px;
+        }
+        
+        .sub_projects_projects{
+          /*border:5px solid indigo;*/
+          grid-row:2;
+
+          display:flex;
+          flex-flow: row wrap;
+          justify-content:space-around;
+          color: rgb(0,32,96);
+          border-radius: 5px;
+          margin-left:-5px;
+          margin-right:-5px;
+
+        } 
+
+        .project_box{
+          border:1px solid black;
+          display: flex;
+          justify-content: center;
+          align-items: center; /* align text vertical */
+
+          text-align: center;
+          background-color: rgb(0,32,96);
+          color: white;
+          border-radius: 5px;
+          padding: 5px;
+          margin:0px 5px 10px 5px;
+          
+          font-size: 14px;
+
+          height: 120px;
+          width: 120px;
+
+        }
+
+  .contact {
+    grid-area: contact;
+
+    color: lightblue;
+    background: rgb(31,61,126);
+    padding: 10px;
+  }
+
+  .about {
+    grid-area: about;
+
+    color: rgb(0,32,96);
+    background: rgb(189,215,238);
+    padding: 10px;
+  }
+
+  .empty {
+    grid-area: empty;
+
+    background: honeydew;
+    padding-bottom: 800px;
+  }
+  /*
+  @media screen 
+    and (min-width: 736px)
+    and (min-device-width: 736px) {
+    .site {
+      font-family: "Calibri", arial, sans-serif;
+      margin: 64px 0px 0px 0px;
+  }
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      grid-template-areas:"siteName navbar";
+
+      position:fixed;   /*Necessario para fixar a barra
+      top:0;            /*Necessario para que se fixe no topo
+      width: 100%;      /*Necessario para que cubra toda a extensao da página
+
+      font-weight: bold;
+      color: lightblue;
+      font-size: 24px
+    }
+  }
+  */
