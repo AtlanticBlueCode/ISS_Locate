@@ -93,7 +93,7 @@ a:active {
   .home {
     grid-area: home;
 
-    color: lightblue;
+    color: white;
     background: rgb(31,61,126);
     padding: 10px;
   }
@@ -185,7 +185,7 @@ a:active {
   .contact {
     grid-area: contact;
 
-    color: lightblue;
+    color: white;
     background: rgb(31,61,126);
     padding: 10px;
   }
@@ -196,6 +196,10 @@ a:active {
     color: rgb(0,32,96);
     background: rgb(189,215,238);
     padding: 10px;
+  }
+
+  #FCC_Link{
+    color: rgb(0,32,96); /*Senão fica com a cor dos <a>*/
   }
 
   .empty {
