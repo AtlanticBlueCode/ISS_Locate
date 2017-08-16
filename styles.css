@@ -2,7 +2,6 @@ h1{
     font-size: 24px;
     margin: 0px;
     margin-bottom: 10px;
-            font-style: italic;
 
 }
 
@@ -18,7 +17,7 @@ a {
     padding-top:5px;
     padding-bottom:5px;
     text-decoration: none;  /*tirar o sublinhado de hyperlink*/
-    font-size: 18px;
+    font-size: 16px;
 }
 
 a:hover {
@@ -35,7 +34,7 @@ a:active {
   
 .site {
   font-family: "Calibri", arial, sans-serif;
-  margin:80px 0px 0px 0px;
+  margin:81px 0px 0px 0px;
 }
 
   .header {
@@ -56,7 +55,7 @@ a:active {
 
     .siteName {
       grid-area: siteName;
-      font-size: 24px;
+      font-size: 26px;
       text-align: left;
       padding: 10px;
     }
@@ -65,7 +64,6 @@ a:active {
       grid-area: navbar;
       display:grid;
       grid-template-columns: 70px 95px 85px 70px;
-      font-style: italic;
     }
 
 
@@ -145,7 +143,6 @@ a:active {
           text-align: center;
           background-color: white;
           color: rgb(0,32,96);
-          font-style: italic;
           font-weight: bold;
           border-radius: 5px;
           padding: 5px;
@@ -178,7 +175,7 @@ a:active {
           padding: 5px;
           margin:0px 5px 10px 5px;
           
-          font-size: 14px;
+          font-size: 12px;
 
           height: 120px;
           width: 120px;
