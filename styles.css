@@ -1,9 +1,12 @@
+*{
+  margin: 0px; /*overrule default stylesheet of the browser*/
+  padding:0px; /*overrule default stylesheet of the browser*/
+  box-sizing: border-box; /*use border-box sizing instead of default 'content-box' in which box dimensions are affected by border thickness or padding. */
+}
+
 h1{
     font-size: 24px;
-    margin: 0px;
-    padding:0px;
     margin-bottom: 10px;
-
 }
 
 p {
