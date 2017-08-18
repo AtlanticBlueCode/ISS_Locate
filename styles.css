@@ -98,7 +98,7 @@ a:active {
     grid-area: home;
 
     color: white;
-    background: yellow;
+    background: rgb(31,61,126);
     padding: 10px;
   }
 
