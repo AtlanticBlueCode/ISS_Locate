@@ -1,30 +1,37 @@
-function Mine(posX) {
+function Mine(pos_x) {
 
   this.radius = 5;
 
-  this.pos = createVector(posX, boat.pos.y + boat.height);
+  this.pos = new vector(pos_x, boat.pos._y + boat.height);
 
-  this.velocity = createVector(0, 5);
+  this.velocity = new vector(0, 5);
   
   this.draw = function () {
-    push();
-    stroke("black");
-    strokeWeight(1);
-    fill("darkblue");
-    ellipse(this.pos.x, this.pos.y, this.radius, this.radius);
-    pop();
+    ctxSea.save();
+
+    ctxSea.fillStyle = "yellow";
+    ctxSea.strokeStyle = "black";
+    ctxSea.lineWidth = 1;
+
+    ctxSea.beginPath();
+    ctxSea.ellipse(this.pos._x, this.pos._y, this.radius, this.radius,0,0,Math.PI*2);
+    ctxSea.closePath();
+    ctxSea.fill();
+    ctxSea.stroke();
+
+    ctxSea.restore();
   };
 
   this.move = function () {
-    this.pos.x += this.velocity.x;
-    this.pos.y += this.velocity.y;
+    this.pos._x += this.velocity._x;
+    this.pos._y += this.velocity._y;
   };
 
   this.hits = function (submarine) {
-    if (this.pos.x + this.radius > submarine.pos.x &&
-      this.pos.x - this.radius < submarine.pos.x + submarine.width &&
-      this.pos.y + this.radius > submarine.pos.y &&
-      this.pos.y - this.radius < submarine.pos.y + submarine.height
+    if (this.pos._x + this.radius > submarine.pos._x &&
+      this.pos._x - this.radius < submarine.pos._x + submarine.width &&
+      this.pos._y + this.radius > submarine.pos._y &&
+      this.pos._y - this.radius < submarine.pos._y + submarine.height
     ) { return true }
   };
 
