@@ -37,7 +37,6 @@ window.onload = startup();
 function startup (){
   window.statusbar= false;
   window.toolbar = false;
-  window.location = false;
   console.log("teste");
   loop();
 };
