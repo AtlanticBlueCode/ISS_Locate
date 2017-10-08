@@ -127,7 +127,7 @@ let baseTouchX = boat.pos._x;
 let varTouchX = 0;
 
 function touchMove(e) {
-//  e.preventDefault();  
+  e.preventDefault();  
 //  touchMoving = true;
   let newTouchX = e.changedTouches[0].clientX;
   varTouchX = newTouchX - baseTouchX;
