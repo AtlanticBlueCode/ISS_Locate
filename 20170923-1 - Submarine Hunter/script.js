@@ -37,8 +37,6 @@ window.onload = startup();
 function startup (){
   window.statusbar= false;
   window.toolbar = false;
-  window.location = false;
-  //  window.resizeTo (window.screen.availWidth / 2, window.screen.height);
   console.log("teste");
   loop();
 };
