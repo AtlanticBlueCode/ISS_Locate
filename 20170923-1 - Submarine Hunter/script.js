@@ -32,6 +32,7 @@ for (let i = 0; i < 15; i++) {
 
 let boat = new Boat();
 
+//window.onload = window.document.requestFullscreen();
 window.onload = loop();
 
 // Game loop
