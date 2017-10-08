@@ -35,9 +35,9 @@ let boat = new Boat();
 window.onload = startup();
 
 function startup (){
-  window.statusbar= false;
-  window.toolbar = false;
-  console.log("teste");
+//  window.statusbar= false;
+//  window.toolbar = false;
+  console.log("Start");
   loop();
 };
 
@@ -105,13 +105,40 @@ function loop() {
 };
 
 
-document.body.addEventListener("keydown", keyDown);
-document.body.addEventListener("keyup", keyUp);
-document.body.addEventListener("touchstart", touch);
+document.body.addEventListener("keydown", keyDown,false);
+document.body.addEventListener("keyup", keyUp,false);
+document.body.addEventListener("touchend", touchEnd,false);
+document.body.addEventListener("touchmove", touchMove,false);
 
-function touch() {
-  mineTimerCheck(new Date());
-};  
+function touchEnd(e) {
+  e.preventDefault();
+  let x = e.changedTouches[0].clientX;
+  console.log("TouchEnd " + x);
+//  touchMoving = false;
+  if (varTouchX == 0) { mineTimerCheck(new Date()) };
+  baseTouchX = boat.pos._x;
+  varTouchX = 0;
+  boat.isMovingLeft = false;
+  boat.isMovingRight = false;
+};
+
+//let touchMoving = false;
+let baseTouchX = boat.pos._x;
+let varTouchX = 0;
+
+function touchMove(e) {
+//  e.preventDefault();  
+//  touchMoving = true;
+  let newTouchX = e.changedTouches[0].clientX;
+  varTouchX = newTouchX - baseTouchX;
+
+  if (varTouchX > 0) { boat.isMovingRight = true };
+  if (varTouchX < 0) { boat.isMovingLeft = true };
+
+  baseTouchX =boat.pos._x;
+  console.log("Move "+newTouchX+" "+"Var "+varTouchX);
+//  mineTimerCheck(new Date());
+};
 
 
 function keyUp(e) {
