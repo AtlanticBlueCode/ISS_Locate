@@ -6,20 +6,20 @@ function setup() {
 }
 
 let frame = 1/60;
-let second = 0;
-let minute = 0;
-let hour = 0;
+//let second = 0;
+//let minute = 0;
+//let hour = 0;
 
 function draw() {
   
   background(0,);
 
-  let hhAngle = map(hour*1 % 12, 0, 12, 0, 360);
-  let mmAngle = map(minute*1, 0, 60, 0, 360);
-  let ssAngle = map(second*1, 0, 60, 0, 360);
+  let hhAngle = map(hour()*1 % 12, 0, 12, 0, 360);
+  let mmAngle = map(minute()*1, 0, 60, 0, 360);
+  let ssAngle = map(second()*1, 0, 60, 0, 360);
   strokeWeight(1);  
 
-
+/*
   second +=frame;
   if (Math.floor(second + frame) === 60) {
     second = 0;
@@ -32,7 +32,8 @@ function draw() {
     }
     else minute += 1
   }
-
+*/
+  
   /*
   text(Math.floor(second),  10, 20);
   text(Math.floor(minute),  10, 40);
@@ -54,7 +55,7 @@ function draw() {
   translate(140, 0);
   rotate(-ssAngle+90);
   strokeWeight(1);  
-  text(Math.floor(second), -5, 5);
+  text(Math.floor(second()), -5, 5);
 
   pop();
 
@@ -71,7 +72,7 @@ function draw() {
   translate(160, 0);
   rotate(-mmAngle+90);
   strokeWeight(1);  
-  text(minute, -5, 5);
+  text(Math.floor(minute()), -5, 5);
 
   pop();
 
@@ -88,7 +89,7 @@ function draw() {
   translate(180, 0);
   rotate(-hhAngle+90);
   strokeWeight(1);  
-  text(hour, -5, 5);
+  text(Math.floor(hour()), -5, 5);
 
   pop();
 
