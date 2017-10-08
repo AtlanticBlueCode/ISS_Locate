@@ -7,9 +7,7 @@ function Reloader (x,y) {
   this.draw = function () {
 
 //    console.log(mineReloadTimer);
-    this.height = Math.min(utils.map(mineReloadTimer, 0, mineReloadTime, 0, 50),50);
-    console.log(this.height);
-    
+    this.height = Math.min(utils.map(mineReloadTimer, 0, mineReloadTime, 0, 50),50);    
     
     ctxSea.save();
     
