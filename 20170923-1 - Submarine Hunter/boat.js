@@ -3,7 +3,7 @@ function Boat() {
   this.width = 50;
   this.height = 10;  
   
-  this.color = "rgba(255,0,0,0.80)";
+  this.color = "rgba(255,0,0,0.40)";
   
   this.pos = new vector(
     utils.randomRange(0,1) * width * 4 / 5 + width * 1 / 10,
@@ -14,6 +14,17 @@ function Boat() {
     0,
     0
   );
+
+  this.move = function () {
+    if (this.isMovingLeft) {  this.velocity._x += -0.1 }
+    if (this.isMovingRight) { this.velocity._x += 0.1 }
+    this.pos._x += this.velocity._x;
+  };
+
+  this.edge = function () {
+    if (this.pos._x > width) { this.pos._x = -this.width};
+    if (this.pos._x < -this.width ) { this.pos._x = width };
+  };
 
   this.draw = function () {
     ctxSea.save();
@@ -62,13 +73,4 @@ function Boat() {
     ctxSea.restore();
   };
 
-  this.move = function () {
-    if (this.isMovingLeft)  { this.pos._x += -2 }
-    if (this.isMovingRight) { this.pos._x += 2 }
-  };
-
-  this.edge = function () {
-    if (this.pos._x > width) { this.pos._x = -this.width};
-    if (this.pos._x < -this.width ) { this.pos._x = width };
-  };
 }

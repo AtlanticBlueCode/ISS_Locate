@@ -1,6 +1,6 @@
 function Submarine() {
   
-  this.width = 30;
+  this.width = Math.max(width/25,30);
   this.height = 10;  
 
   this.color = utils.getRandomColorRGB();
@@ -15,12 +15,22 @@ function Submarine() {
     0
   );
 
+  this.move = function () {
+    this.pos._x += this.velocity._x;
+    this.pos._y += this.velocity._y;
+
+  };
+
+  this.edge = function () {
+    if (this.pos._x > width) { this.pos._x = -this.width};
+    if (this.pos._x < -this.width ) { this.pos._x = width};
+  };
+
   this.draw = function () {
     ctxSea.save();
 
     ctxSea.translate(this.pos._x, this.pos._y);
     
-
     ctxSea.fillStyle = this.color;
     ctxSea.strokeStyle = "black";
     ctxSea.lineWidth = 1;
@@ -60,16 +70,6 @@ function Submarine() {
     
     
     ctxSea.restore();
-  };
-
-  this.move = function () {
-    this.pos._x += this.velocity._x;
-    this.pos._y += this.velocity._y;
-  };
-
-  this.edge = function () {
-    if (this.pos._x > width) { this.pos._x = -this.width};
-    if (this.pos._x < -this.width ) { this.pos._x = width};
   };
 
 }
