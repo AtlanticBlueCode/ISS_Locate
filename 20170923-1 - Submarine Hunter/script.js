@@ -100,6 +100,11 @@ function loop() {
 
 document.body.addEventListener("keydown", keyDown);
 document.body.addEventListener("keyup", keyUp);
+document.body.addEventListener("touchstart", touch);
+
+function touch() {
+  mineTimerCheck(new Date());
+};  
 
 
 function keyUp(e) {
