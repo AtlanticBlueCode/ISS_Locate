@@ -110,7 +110,7 @@ function loop() {
   
   touchTimer = new Date().getTime();
 
-  if (touchEndDate < touchStartDate && touchTimer - touchStartDate > 100) {         // touch em curso e maior que apenas bomba
+  if (touchEndDate < touchStartDate && touchTimer - touchStartDate > 150) {         // touch em curso e maior que apenas bomba
     if (touchX > width / 2) { boat.velocity._x += +0.1 }
     if (touchX < width / 2) { boat.velocity._x += -0.1 }
   };
@@ -146,7 +146,7 @@ function touchEnd(e) {
   console.log("touchEndDate: " + touchEndDate);
   console.log("touchDuration: " + touchDuration);
   
-  if (touchDuration < 100) {
+  if (touchDuration < 150) {
     mineTimerCheck(new Date());
   };
 
