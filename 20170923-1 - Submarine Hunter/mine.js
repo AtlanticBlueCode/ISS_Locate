@@ -1,23 +1,27 @@
+
 var mineImage = new Image();
 mineImage.src = "Assets/bomb/bomb.png"; // Set source path
 
 
-function Mine(pos_x) {
+class Mine {
 
-  this.hit = false;  
+  constructor(pos_x) {
 
-  this.radius = 5;
+    this.hit = false;
 
-  this.pos = new vector(pos_x, boat.pos._y + boat.height);
+    this.radius = 5;
 
-  this.velocity = new vector(0, 2.5);
+    this.pos = new Vector(pos_x, boat.pos._y + boat.height);
+
+    this.velocity = new Vector(0, 2.5);
+  }
   
-  this.move = function () {
+  move () {
     this.pos._x += this.velocity._x;
     this.pos._y += this.velocity._y;
   };
 
-  this.hits = function (submarine) {
+  hits (submarine) {
     if (  this.pos._x + 0*this.radius > submarine.pos._x &&
           this.pos._x - 0*this.radius < submarine.pos._x + submarine.width &&
           this.pos._y + 0*this.radius > submarine.pos._y &&
@@ -25,7 +29,7 @@ function Mine(pos_x) {
     ) { return true }
   };
 
-  this.draw = function () {
+  draw () {
 
 /*    ctxSea.save();
 
@@ -63,7 +67,7 @@ function Mine(pos_x) {
 
   };
 
-  this.explosion = function () {
+  explosion () {
     drawExplosion(this.pos._x, this.pos._y);
   };
 

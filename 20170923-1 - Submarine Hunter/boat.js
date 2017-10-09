@@ -1,32 +1,36 @@
-function Boat() {
 
-  this.width = 50;
-  this.height = 10;  
+class Boat{
+
+  constructor(){
+    this.width = 50;
+    this.height = 10;
   
-  this.color = "rgba(255,255,255,0.40)";
+    this.color = "rgba(255,255,255,0.40)";
   
-  this.pos = new vector(
-    utils.randomRange(0,1) * width * 4 / 5 + width * 1 / 10,
-    height * 1 / 5 - this.height + 3
-  );
+    this.pos = new Vector(
+      utils.randomRange(0, 1) * width * 4 / 5 + width * 1 / 10,
+      height * 1 / 5 - this.height + 3
+    );
 
-  this.velocity = new vector(
-    0,
-    0
-  );
+    this.velocity = new Vector(
+      0,
+      0
+    );
+  }
 
-  this.move = function () {
+  move () {
     if (this.isAcceleratingLeft) {  this.velocity._x += -0.1 }
     if (this.isAcceleratingRight) { this.velocity._x += 0.1 }
     this.pos._x += this.velocity._x;
   };
 
-  this.edge = function () {
+  edge () {
     if (this.pos._x > width) { this.pos._x = -this.width};
     if (this.pos._x < -this.width ) { this.pos._x = width };
   };
+  
 
-  this.draw = function () {
+  draw () {
     ctxSea.save();
 
     ctxSea.translate(this.pos._x, this.pos._y);

@@ -10,7 +10,7 @@ let width = canvasSea.width = canvasExplosion.width = window.innerWidth;
 let height = canvasSea.height = canvasExplosion.height = window.innerHeight;
 
 let mines = [];
-let mineReloadTime = 2000;
+let mineReloadTime = 500;
 let mineReloadTimer = 0;
 let mineReloadStart = new Date().getTime();
 let maxMines = 3;
@@ -152,20 +152,6 @@ function touchEnd(e) {
 
 };
 
-/*
-
-function touchMove(e) {
-  e.preventDefault();  
-
-  varTouchX = e.changedTouches[0].clientX - width / 2;
-
-  if (varTouchX > 0) { boat.isMovingRight = true };
-  if (varTouchX < 0) { boat.isMovingLeft = true };
-
-  console.log("Move " + newTouchX + " " + "Var " + varTouchX);
-//  mineTimerCheck(new Date());
-};
-*/
 
 function keyUp(e) {
   switch (event.keyCode) {

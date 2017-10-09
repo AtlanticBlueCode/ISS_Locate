@@ -1,32 +1,35 @@
-function Submarine() {
+
+class Submarine {
+
+  constructor() {
+    this.width = Math.max(width / 25, 30);
+    this.height = 10;
+
+    this.color = utils.getRandomColorRGB();
   
-  this.width = Math.max(width/25,30);
-  this.height = 10;  
+    this.pos = new Vector(
+      utils.randomRange(0, 1) * width * 4 / 5 + width * 1 / 10,
+      utils.randomRange(0, 1) * height * 3 / 5 + height * 3 / 10
+    );
 
-  this.color = utils.getRandomColorRGB();
-  
-  this.pos = new vector(
-    utils.randomRange(0,1) * width * 4 / 5 + width * 1 / 10,
-    utils.randomRange(0,1) * height * 3 / 5 + height * 3 / 10
-  );
+    this.velocity = new Vector(
+      (utils.randomRange(-1, 1) > 0 ? 1 : -1) * utils.randomRange(0.5, 1.5),
+      0
+    );
+  };
 
-  this.velocity = new vector(
-    (utils.randomRange(-1, 1) > 0 ? 1 : -1) * utils.randomRange(0.5,1.5),
-    0
-  );
-
-  this.move = function () {
+  move () {
     this.pos._x += this.velocity._x;
     this.pos._y += this.velocity._y;
 
   };
 
-  this.edge = function () {
+  edge () {
     if (this.pos._x > width) { this.pos._x = -this.width};
     if (this.pos._x < -this.width ) { this.pos._x = width};
   };
 
-  this.draw = function () {
+  draw () {
     ctxSea.save();
 
     ctxSea.translate(this.pos._x, this.pos._y);

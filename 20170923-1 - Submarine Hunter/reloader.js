@@ -1,10 +1,14 @@
-function Reloader (x,y) {
+class Reloader {
 
-  this.height = 0;
+  constructor(x, y) {
 
-  this.pos = new vector(x, y);
+    this.height = 0;
 
-  this.draw = function () {
+    this.pos = new Vector(x, y);
+  
+  }  
+
+  draw () {
 
 //    console.log(mineReloadTimer);
     this.height = Math.min(utils.map(mineReloadTimer, 0, mineReloadTime, 0, 50),50);    
