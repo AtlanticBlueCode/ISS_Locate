@@ -1,5 +1,7 @@
+
 var explosionImage = new Image();   // Create new img element
 explosionImage.src = "Assets/explosion/Sprite Sheet/ExplosionA1.png"; // Set source path
+
 
 
 class Explosion{
@@ -9,7 +11,9 @@ class Explosion{
             x,
             y
         );
+
         this.exploding = true;
+
         this.explosionSprite = {
             countFrame: 0, // Contador de frames passadas
             partialFrame: 0, // Contador de sub frames do browser para carregar nova frame da sprite sheet

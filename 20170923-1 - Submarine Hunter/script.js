@@ -54,12 +54,14 @@ function loop() {
 
   ctxExplosion.clearRect(0, 0, width, height);
 
+  drawSeaScape();
+  /*
   ctxSea.fillStyle = "lightblue";
   ctxSea.fillRect(0, 0, width, height);
 
   ctxSea.fillStyle = "blue";
   ctxSea.fillRect(0, height * 1 / 5, width, height);
-
+*/
   
   timeElapsed = Math.floor((new Date() - timeStart) / 100) / 10;
 
@@ -169,10 +171,10 @@ function keyUp(e) {
 function keyDown(e) {
   switch (event.keyCode) {
     case 37: //left
-      boat.velocity._x += -0.1;
+      boat.velocity._x += -0.2;
       break;
     case 39: //right
-      boat.velocity._x += +0.1;
+      boat.velocity._x += +0.2;
     break;
     case 40: //down
       mineTimerCheck(new Date().getTime());

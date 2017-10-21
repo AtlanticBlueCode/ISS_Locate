@@ -1,8 +1,11 @@
 class Reloader {
 
   constructor(x, y) {
+
     this.height = 0;
+
     this.pos = new Vector(x, y);
+  
   }  
 
   draw () {

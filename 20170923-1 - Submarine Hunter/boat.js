@@ -1,3 +1,9 @@
+var boatImageRight = new Image();   // Create new img element
+boatImageRight.src = "Assets/battleship/RedShipRight.png"; // Set source path
+
+var boatImageLeft = new Image();   // Create new img element
+boatImageLeft.src = "Assets/battleship/RedShipLeft.png"; // Set source path
+
 
 class Boat{
 
@@ -9,18 +15,18 @@ class Boat{
   
     this.pos = new Vector(
       utils.randomRange(0, 1) * width * 4 / 5 + width * 1 / 10,
-      height * 1 / 5 - this.height + 3
+      height * 1 / 4.5
     );
 
     this.velocity = new Vector(
-      0,
+      Math.random()*2-1,
       0
     );
+
+    this.image;
   }
 
   move () {
-    if (this.isAcceleratingLeft) {  this.velocity._x += -0.1 }
-    if (this.isAcceleratingRight) { this.velocity._x += 0.1 }
     this.pos._x += this.velocity._x;
   };
 
@@ -31,6 +37,19 @@ class Boat{
   
 
   draw () {
+    this.velocity._x > 0 ? this.image = boatImageRight : this.image = boatImageLeft;
+    ctxSea.save();
+    ctxSea.translate(this.pos._x, this.pos._y);
+    ctxSea.drawImage(
+      this.image, // Imagem da sprites sheet toda
+      0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
+      this.image.width, this.image.height, // Largura e Altura da frame a recortar
+      0-this.image.width/6/3.5 , 0-this.image.height/5.25/1.5, // Coordenadas do canto sup esquerdo destino no canvas
+      this.image.width/6, this.image.height/5.25 // Largura e Altura da frame a desenhar
+    );
+    ctxSea.restore();
+
+    /*
     ctxSea.save();
 
     ctxSea.translate(this.pos._x, this.pos._y);
@@ -75,6 +94,7 @@ class Boat{
 
     
     ctxSea.restore();
+    */
   };
 
 }

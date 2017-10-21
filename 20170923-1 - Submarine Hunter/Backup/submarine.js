@@ -1,14 +1,8 @@
-var subA_RightImage = new Image();   // Create new img element
-subA_RightImage.src = "Assets/submarine/SubA_Right.png"; // Set source path
-
-var subA_LeftImage = new Image();   // Create new img element
-subA_LeftImage.src = "Assets/submarine/SubA_Left.png"; // Set source path
-
 
 class Submarine {
 
   constructor() {
-    this.width = Math.max(width / 25, 30)*0+78*0.7;
+    this.width = Math.max(width / 25, 30);
     this.height = 10;
 
     this.color = utils.getRandomColorRGB();
@@ -22,9 +16,6 @@ class Submarine {
       (utils.randomRange(-1, 1) > 0 ? 1 : -1) * utils.randomRange(0.5, 1.5),
       0
     );
-
-    this.image;
-    
   };
 
   move () {
@@ -39,20 +30,6 @@ class Submarine {
   };
 
   draw () {
-    this.velocity._x > 0 ? this.image = subA_RightImage : this.image = subA_LeftImage;
-    ctxSea.save();
-    ctxSea.translate(this.pos._x, this.pos._y);
-    ctxSea.globalAlpha=0.5;
-    ctxSea.drawImage(
-      this.image, // Imagem da sprites sheet toda
-      0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
-      this.image.width, this.image.height, // Largura e Altura da frame a recortar
-      0 , 0-this.image.height/2, // Coordenadas do canto sup esquerdo destino no canvas
-      this.image.width*0.7 , this.image.height*0.7  // Largura e Altura da frame a desenhar
-    );
-    ctxSea.restore();
-
-/*
     ctxSea.save();
 
     ctxSea.translate(this.pos._x, this.pos._y);
@@ -96,7 +73,6 @@ class Submarine {
     
     
     ctxSea.restore();
-*/
   };
 
 }
