@@ -46,7 +46,7 @@ function loop() {
   ctx.fillText("Coord Click Y " + Math.round(clickY), 10, 110)
   ctx.fillText("Mouse Clicked " + mouseClicked, 10, 130)
   
-  ctx.fillStyle = "rgba(255,255,255, 0.05)";
+  ctx.fillStyle = "rgba(255,255,255, 0.025)";
   ctx.fillRect(0, 0, width, height);
 
   ctx.lineWidth = 2;
