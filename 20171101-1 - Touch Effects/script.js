@@ -32,7 +32,7 @@ function startup() {
 function loop() {
 
   ctx.fillStyle = "rgba(255,255,255, 1)";
-  ctx.fillRect(0, 0, 300, 100);
+  ctx.fillRect(0, 0, 300, 140);
   
   timeElapsed = Math.floor((new Date() - timeStart) / 100) / 10;
 
@@ -40,9 +40,11 @@ function loop() {
   ctx.fillText("Time: " + timeElapsed, 10, 20)
   ctx.fillText("Coord Mouse X " + Math.round(mouseX), 10, 40)
   ctx.fillText("Coord Mouse Y " + Math.round(mouseY), 10, 50)
-  ctx.fillText("Coord Click X " + Math.round(clickX), 10, 70)
-  ctx.fillText("Coord Click Y " + Math.round(clickY), 10, 80)
-  ctx.fillText("Mouse Clicked " + mouseClicked, 10, 100)
+  ctx.fillText("Coord Old Mouse X " + Math.round(oldMouseX), 10, 70)
+  ctx.fillText("Coord Old Mouse Y " + Math.round(oldMouseY), 10, 80)
+  ctx.fillText("Coord Click X " + Math.round(clickX), 10, 100)
+  ctx.fillText("Coord Click Y " + Math.round(clickY), 10, 110)
+  ctx.fillText("Mouse Clicked " + mouseClicked, 10, 130)
   
   ctx.fillStyle = "rgba(255,255,255, 0.05)";
   ctx.fillRect(0, 0, width, height);
@@ -50,16 +52,30 @@ function loop() {
   ctx.lineWidth = 2;
   ctx.strokeStyle = "blue";
 
+  /*
+  var moveToX = function () {
+    if (oldMouseX = undefined) { return mouseX } else { return oldMouseX };
+  }
+  var moveToY = function () {
+    if (oldMouseY = undefined) { return mouseY } else { return oldMouseY };
+  }
+*/
+  
   if (mouseClicked) {
     ctx.beginPath();
-    ctx.moveTo(oldMouseX, oldMouseY);
+    ctx.moveTo(oldMouseX == undefined ? clickX : oldMouseX, oldMouseY == undefined ? clickY : oldMouseY);
     ctx.lineTo(mouseX, mouseY);
     oldMouseX = mouseX;
     oldMouseY = mouseY;
     ctx.stroke();
+    ctx.closePath();
   } else {
     oldMouseX = undefined;
     oldMouseY = undefined;
+    mouseX = undefined;
+    mouseY = undefined;
+    
+    
   }
 
   requestAnimationFrame(loop); //chamar a propria funcao "desenhar" sempre que o ecra esteja pronto para processar nova frame
