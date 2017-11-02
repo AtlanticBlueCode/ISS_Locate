@@ -46,11 +46,12 @@ function loop() {
   ctx.fillText("Coord Click Y " + Math.round(clickY), 10, 110)
   ctx.fillText("Mouse Clicked " + mouseClicked, 10, 130)
   
-  ctx.fillStyle = "rgba(255,255,255, 0.025)";
+  ctx.fillStyle = "rgba(255,255,255, 0.2)";
   ctx.fillRect(0, 0, width, height);
 
   ctx.lineWidth = 2;
-  ctx.strokeStyle = "blue";
+  ctx.strokeStyle = "blue"//utils.getRandomColorRGB();
+  
 
   /*
   var moveToX = function () {
