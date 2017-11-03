@@ -18,8 +18,6 @@ let oldMouseY;
 
 let mouseClicked = false;
 
-let lineWidth;
-let lineColor;
 
 window.onload = startup();
 
@@ -33,7 +31,6 @@ function startup() {
 // Game loop
 function loop() {
 
-  /*
   ctx.fillStyle = "rgba(255,255,255, 1)";
   ctx.fillRect(0, 0, 300, 140);
   
@@ -49,13 +46,11 @@ function loop() {
   ctx.fillText("Coord Click Y " + Math.round(clickY), 10, 110)
   ctx.fillText("Mouse Clicked " + mouseClicked, 10, 130)
   
-*/
-
   ctx.fillStyle = "rgba(255,255,255, 0.2)";
   ctx.fillRect(0, 0, width, height);
 
-  ctx.lineWidth = lineWidth;
-  ctx.strokeStyle = lineColor;
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "blue"//utils.getRandomColorRGB();
   
 
   /*
@@ -112,8 +107,6 @@ function mouseDown(e) {
   clickX = e.clientX;
   clickY = e.clientY;
   mouseClicked = true;
-  lineWidth = Math.random()*13 +2 ;
-  lineColor = utils.getRandomColorRGB();
 };
 
 function mouseUp(e) {
@@ -133,8 +126,6 @@ function touchStart(e) {
   clickX = e.changedTouches[0].clientX;
   clickY = e.changedTouches[0].clientY;
   mouseClicked = true;
-  lineWidth = Math.random()*8 +2 ;
-  lineColor = utils.getRandomColorRGB();
 };
 
 function touchEnd(e) {
