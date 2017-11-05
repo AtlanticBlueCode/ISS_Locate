@@ -9,6 +9,8 @@ ctxExplosion = canvasExplosion.getContext("2d");
 let width = canvasSea.width = canvasExplosion.width = window.innerWidth;
 let height = canvasSea.height = canvasExplosion.height = window.innerHeight;
 
+navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.maVibrate;
+  
 let mines = [];
 let mineReloadTime = 500;
 let mineReloadTimer = 0;
@@ -94,7 +96,7 @@ function loop() {
         submarines.splice(j, 1);
         mines[i].hit = true;
         hits++;
-//        if ('vibrate' in navigator) { navigator.vibrate(200) };
+        if (navigator.vibrate) { navigator.vibrate(200) };
         explosions.push(new Explosion(mines[i].pos._x, mines[i].pos._y));
       };
     };
