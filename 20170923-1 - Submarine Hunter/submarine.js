@@ -8,7 +8,7 @@ subA_LeftImage.src = "Assets/submarine/SubA_Left.png"; // Set source path
 class Submarine {
 
   constructor() {
-    this.width = Math.max(width / 25, 30)*0+78*0.7;
+    this.width = Math.max(width / 25, 30);
     this.height = 10;
 
     this.color = utils.getRandomColorRGB();
@@ -42,7 +42,6 @@ class Submarine {
     this.velocity._x > 0 ? this.image = subA_RightImage : this.image = subA_LeftImage;
     ctxSea.save();
     ctxSea.translate(this.pos._x, this.pos._y);
-    ctxSea.globalAlpha=0.5;
     ctxSea.drawImage(
       this.image, // Imagem da sprites sheet toda
       0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
