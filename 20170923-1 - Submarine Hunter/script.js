@@ -94,6 +94,7 @@ function loop() {
         submarines.splice(j, 1);
         mines[i].hit = true;
         hits++;
+        navigator.vibrate(200);
         explosions.push(new Explosion(mines[i].pos._x, mines[i].pos._y));
       };
     };
