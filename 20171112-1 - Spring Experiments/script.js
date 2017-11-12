@@ -88,7 +88,7 @@ document.body.addEventListener("touchmove", touchMove,false);
 document.body.addEventListener("touchend", touchEnd,false);
 
 function touchStart(e) {
-//  e.preventDefault();
+  e.preventDefault();
   touchStartDate = new Date().getTime();
   touchStartX = touchX = e.changedTouches[0].clientX;
   touchStartY = touchY = e.changedTouches[0].clientY;
@@ -96,13 +96,13 @@ function touchStart(e) {
 };
 
 function touchMove(e) {
-//  e.preventDefault();
+  e.preventDefault();
   touchX = e.changedTouches[0].clientX;
   touchY = e.changedTouches[0].clientY;
 };
 
 function touchEnd(e) {
-//  e.preventDefault();
+  e.preventDefault();
   touchEndDate = new Date().getTime(); 
   touchDuration = touchEndDate - touchStartDate; 
   touchEndX = e.changedTouches[0].clientX;
