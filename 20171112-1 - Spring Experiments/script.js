@@ -1,12 +1,13 @@
+"use strict"
 
 var canvas = document.getElementById("canvas"),
     context = canvas.getContext("2d");
 
-var width = canvas.width = window.innerWidth,
-    heigth = canvas.height = window.innerHeight;
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
 
-let base = new Particle (width/2, heigth/2,0,0,0)
-let peso = new Particle (width/2-100, heigth/2,0,0,0)
+let base = new Particle (width/2, height/2,0,0,0)
+let peso = new Particle (width/2-100, height/2,0,0,0)
 
 peso.friction = 0.9;
 
