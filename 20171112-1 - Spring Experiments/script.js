@@ -37,7 +37,7 @@ loop(); //necessario chamar a funcao pela primeira vez, fora da propria funcao
 function loop() {
 
     clearScreen();
-    showData();
+//    showData();
 
     base.draw();
 
