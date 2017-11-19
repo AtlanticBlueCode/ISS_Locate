@@ -82,6 +82,19 @@ function loop() {
     requestAnimationFrame(loop); //chamar a propria funcao "desenhar" sempre que o ecra esteja pronto para processar nova frame
 };
 
+/*
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    output.innerHTML = this.value;
+}
+*/
+
+
+// Mouse Event Listeners and Functions
 
 document.body.addEventListener("touchstart", touchStart,false);
 document.body.addEventListener("touchmove", touchMove,false);
@@ -113,58 +126,90 @@ function touchEnd(e) {
   console.log(touchVector);
   console.log("touchEndDate: " + touchEndDate);
   console.log("touchDuration: " + touchDuration);
+};
 
+
+// Touch Event Listeners and Functions
+
+document.body.addEventListener("mousedown", mouseStart, false);
+document.body.addEventListener("mousemove", mouseMove,false);
+document.body.addEventListener("mouseup", mouseEnd,false);
+
+function mouseStart(e) {
+  e.preventDefault();
+  touchStartDate = new Date().getTime();
+  touchStartX = touchX = e.clientX;
+  touchStartY = touchY = e.clientY;
+  console.log("touchStartDate: " + touchStartDate);
+};
+
+function mouseMove(e) {
+  e.preventDefault();
+  touchX = e.clientX;
+  touchY = e.clientY;
+};
+
+function mouseEnd(e) {
+  e.preventDefault();
+  touchEndDate = new Date().getTime(); 
+  touchDuration = touchEndDate - touchStartDate; 
+  touchEndX = e.clientX;
+  touchEndY = e.clientY;
+  touchVector.setX(touchEndX - touchStartX);
+  touchVector.setY(touchEndY - touchStartY);
+  touchEndSequence = true;  
+  console.log(touchVector);
+  console.log("touchEndDate: " + touchEndDate);
+  console.log("touchDuration: " + touchDuration);
+};
+
+
+
+// Key Event Listeners and Functions
+
+document.body.addEventListener("keydown", keyDown, false);
+document.body.addEventListener("keyup", keyUp, false);
+
+function keyDown (e) {
+  console.log(e.keyCode); // truque para logar para a consola o codigo da trecla que se carrega
+  switch (e.keyCode) {
+    case 38: //up
+      base.thrusting = true;
+      break;
+    case 37: //left
+      base.turningLeft = true;
+      break;
+    case 39: //right
+      base.turningRight = true;
+      break;
+    default:
+      break;
+  };
+};
+
+function keyUp (e) {
+  switch (e.keyCode) {
+    case 38: //up
+      base.thrusting = false;
+      break;
+    case 37: //left
+      base.turningLeft = false;
+      break;
+    case 39: //right
+      base.turningRight = false;
+      break;
+    default:
+      break;
+  }
 };
 
 
 
 
-// criar event listener para tecla down
-// em funcao da tecla carregada ira alterar o vector thrust
-// up dá length thrust
-// esq e dir altera angle do thrust
-document.body.addEventListener("keydown", function (event) {
-    console.log(event.keyCode); // truque para logar para a consola o codigo da trecla que se carrega
-    switch (event.keyCode) {
-        case 38: //up
-            base.thrusting = true;
-            break;
-        case 37: //left
-            base.turningLeft = true;
-            break;
-        case 39: //right
-            base.turningRight = true;
-            break;
-        default:
-            break;
-    }
-});
-
-// criar event listener para tecla up
-// define o que acontece ao thrust se tecla deixar de ser carregada
-// sem este passo o thrust continuaria para sempre com valor que tinha quando deixei de carregar na tecla 
-document.body.addEventListener("keyup", function (event) {
-    //    console.log(event.keyCode); // truque para logar para a consola o codigo da trecla que se carrega
-    switch (event.keyCode) {
-        case 38: //up
-            base.thrusting = false;
-            break;
-        case 37: //left
-            base.turningLeft = false;
-            break;
-        case 39: //right
-            base.turningRight = false;
-            break;
-        default:
-            break;
-    }
-});
-
-
-
-
-
 function showData () {                        // Indicar dados sobre a base
+    context.fillStyle = 'rgba(255, 255, 255,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
+    context.fillRect(0, 0, 100, 200); //limpar bem zona de dados  
+
     context.fillStyle = 'black';
      
     context.fillText("Position X: " + base.position.getX().toFixed(2), 0, 10);
@@ -190,7 +235,4 @@ function showData () {                        // Indicar dados sobre a base
 function clearScreen () {                         // Limpeza de ecra para rendering    
     context.fillStyle = 'rgba(255, 255, 255, .35)'; // para criar efeito fade pinto todo o canvas deixando um opacity 0.15
     context.fillRect(0, 0, canvas.width, canvas.height); //limpar o canvas todo no inicio da nova frame
-
-    context.fillStyle = 'rgba(255, 255, 255,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
-    context.fillRect(0, 0, 100, 200); //limpar bem zona de dados  
 };
