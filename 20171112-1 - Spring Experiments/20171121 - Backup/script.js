@@ -5,6 +5,9 @@ var canvas = document.getElementById("canvas"),
 
 let k = 0.1;
     
+var settings = QuickSettings.create(10, 10, "Spring Effects");
+settings.addRange("Elasticity", 0, 100, 50, 1, function (x) { k = x / 100;});  // creates a range slider
+
 let width = canvas.width = window.innerWidth;
 let height = canvas.height = window.innerHeight;
 
@@ -12,10 +15,6 @@ let base = new Particle (width/2, height/2,0,0,0)
 let peso = new Particle (width/2-100, height/2,0,0,0)
 
 peso.friction = 0.9;
-
-let settings = QuickSettings.create(10, 10, "Spring Effects");
-settings.addRange("Elasticity", 1, 100, 10, 1, function (x) { k = x / 100;});  // creates a range slider
-settings.addRange("Friction", 1, 100, 90, 1, function (x) { peso.friction = x / 100;});  // creates a range slider
 
 let touchStartDate = 0;
 let touchEndDate = 0;
@@ -100,30 +99,30 @@ slider.oninput = function() {
 
 // Mouse Event Listeners and Functions
 
-canvas.addEventListener("touchstart", touchStart,false);
-canvas.addEventListener("touchmove", touchMove,false);
-canvas.addEventListener("touchend", touchEnd,false);
+document.body.addEventListener("touchstart", touchStart,false);
+document.body.addEventListener("touchmove", touchMove,false);
+document.body.addEventListener("touchend", touchEnd,false);
 
 function touchStart(e) {
   e.preventDefault();
   touchStartDate = new Date().getTime();
-  touchStartX = touchX = e.changedTouches[0].offsetX;
-  touchStartY = touchY = e.changedTouches[0].offsetY;
+  touchStartX = touchX = e.changedTouches[0].clientX;
+  touchStartY = touchY = e.changedTouches[0].clientY;
   console.log("touchStartDate: " + touchStartDate);
 };
 
 function touchMove(e) {
   e.preventDefault();
-  touchX = e.changedTouches[0].offsetX;
-  touchY = e.changedTouches[0].offsetY;
+  touchX = e.changedTouches[0].clientX;
+  touchY = e.changedTouches[0].clientY;
 };
 
 function touchEnd(e) {
   e.preventDefault();
   touchEndDate = new Date().getTime(); 
   touchDuration = touchEndDate - touchStartDate; 
-  touchEndX = e.changedTouches[0].offsetX;
-  touchEndY = e.changedTouches[0].offsetY;
+  touchEndX = e.changedTouches[0].clientX;
+  touchEndY = e.changedTouches[0].clientY;
   touchVector.setX(touchEndX - touchStartX);
   touchVector.setY(touchEndY - touchStartY);
   touchEndSequence = true;  
@@ -135,30 +134,30 @@ function touchEnd(e) {
 
 // Touch Event Listeners and Functions
 
-canvas.addEventListener("mousedown", mouseStart, false);
-canvas.addEventListener("mousemove", mouseMove,false);
-canvas.addEventListener("mouseup", mouseEnd,false);
+document.body.addEventListener("mousedown", mouseStart, false);
+document.body.addEventListener("mousemove", mouseMove,false);
+document.body.addEventListener("mouseup", mouseEnd,false);
 
 function mouseStart(e) {
   e.preventDefault();
   touchStartDate = new Date().getTime();
-  touchStartX = touchX = e.offsetX;
-  touchStartY = touchY = e.offsetY;
+  touchStartX = touchX = e.clientX;
+  touchStartY = touchY = e.clientY;
   console.log("touchStartDate: " + touchStartDate);
 };
 
 function mouseMove(e) {
   e.preventDefault();
-  touchX = e.offsetX;
-  touchY = e.offsetY;
+  touchX = e.clientX;
+  touchY = e.clientY;
 };
 
 function mouseEnd(e) {
   e.preventDefault();
   touchEndDate = new Date().getTime(); 
   touchDuration = touchEndDate - touchStartDate; 
-  touchEndX = e.offsetX;
-  touchEndY = e.offsetY;
+  touchEndX = e.clientX;
+  touchEndY = e.clientY;
   touchVector.setX(touchEndX - touchStartX);
   touchVector.setY(touchEndY - touchStartY);
   touchEndSequence = true;  
