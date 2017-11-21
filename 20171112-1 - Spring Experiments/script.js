@@ -14,8 +14,8 @@ let peso = new Particle (width/2-100, height/2,0,0,0)
 peso.friction = 0.9;
 
 let settings = QuickSettings.create(10, 10, "Spring Effects");
-settings.addRange("Elasticity", 1, 100, 10, 1, function (x) { k = x / 100;});  // creates a range slider
-settings.addRange("Friction", 1, 100, 90, 1, function (x) { peso.friction = x / 100;});  // creates a range slider
+settings.addRange("Elasticity", 1, 30, 10, 1, function (x) { k = x / 100;});  // creates a range slider
+settings.addRange("Friction", 70, 100, 90, 1, function (x) { peso.friction = x / 100;});  // creates a range slider
 
 let touchStartDate = 0;
 let touchEndDate = 0;
@@ -107,23 +107,23 @@ canvas.addEventListener("touchend", touchEnd,false);
 function touchStart(e) {
   e.preventDefault();
   touchStartDate = new Date().getTime();
-  touchStartX = touchX = e.changedTouches[0].offsetX;
-  touchStartY = touchY = e.changedTouches[0].offsetY;
+  touchStartX = touchX = e.changedTouches[0].clientX;
+  touchStartY = touchY = e.changedTouches[0].clientY;
   console.log("touchStartDate: " + touchStartDate);
 };
 
 function touchMove(e) {
   e.preventDefault();
-  touchX = e.changedTouches[0].offsetX;
-  touchY = e.changedTouches[0].offsetY;
+  touchX = e.changedTouches[0].clientX;
+  touchY = e.changedTouches[0].clientY;
 };
 
 function touchEnd(e) {
   e.preventDefault();
   touchEndDate = new Date().getTime(); 
   touchDuration = touchEndDate - touchStartDate; 
-  touchEndX = e.changedTouches[0].offsetX;
-  touchEndY = e.changedTouches[0].offsetY;
+  touchEndX = e.changedTouches[0].clientX;
+  touchEndY = e.changedTouches[0].clientY;
   touchVector.setX(touchEndX - touchStartX);
   touchVector.setY(touchEndY - touchStartY);
   touchEndSequence = true;  
