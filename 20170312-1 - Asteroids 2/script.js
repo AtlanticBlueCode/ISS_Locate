@@ -22,6 +22,8 @@ var InitialLiveAsteroids;
 var AsteroidsGenerated;
 	
 var Lasers;
+var LaserTimer;
+var LaserMinTime;
 var MaxLiveLasers;
 var LasersFiredCount;
 var LaserFired;
@@ -58,7 +60,9 @@ function initialize() {
 	};
 
 	Lasers = [];
-	MaxLiveLasers = 2;
+  LaserMinTime = 350;
+  LaserTimer = new Date().getTime();
+  MaxLiveLasers = 2;
 	LasersFiredCount = 0;
 	LaserFired = false;
 
@@ -112,6 +116,11 @@ function start() {
 	loop();
 }
 
+function LaserTimeCheck(){
+  var now = new Date().getTime();
+  if (now - LaserTimer > LaserMinTime){return true};
+};
+
 // Game loop
 function loop() {
 
@@ -154,9 +163,10 @@ function loop() {
 	};
 
 	// Disparar novo Laser se possível
-	if (LaserFired == true && Lasers.length < MaxLiveLasers) {
+	if (LaserFired == true && LaserTimeCheck() == true) {
 		Lasers.push(new laser(Ship_A.position.getX(), Ship_A.position.getY(), Ship_A.maxVelocity * 1.5, Ship_A.bearing.getAngle()));
-		LasersFiredCount++;
+    LasersFiredCount++;
+    LaserTimer = new Date().getTime();
 	};
 
 	// Avançar os Lasers ja existentes, desenha-los, ver se atingem alvos e tratar conseequencias   
