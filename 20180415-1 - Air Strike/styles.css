@@ -1,0 +1,22 @@
+body {
+  overflow: hidden;   /*To avoid scrollbars appearing because Canvas is by default an inline element*/
+  margin: 0;
+  padding:0;
+  background-size: cover;
+  /*margin do Body por default é 8px */
+  /*border: 5px solid red;*/
+}
+
+#container {
+  position: relative;
+  /*border: 5px solid yellow;*/
+}
+
+#canvas {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0px;
+  left: 0px;
+  /*border: 5px solid blue;*/
+}
