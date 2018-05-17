@@ -27,7 +27,6 @@ class Target {
     this.position._y += this.waving;
     this.waver +=0.07;
     this.waving = Math.sin(this.waver)*0.75;
-    console.log (this.waving);
   }
 
   accelerate() {
