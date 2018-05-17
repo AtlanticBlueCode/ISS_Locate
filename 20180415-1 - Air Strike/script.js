@@ -51,7 +51,15 @@ function spawnTarget (){
   targets.push(new Target());
 }
 
-newFrame();
+window.onload = startup();
+
+function startup (){
+//  window.statusbar= false;
+//  window.toolbar = false;
+  console.log("Start");
+  newFrame();
+};
+
 
 function newFrame() {
 
