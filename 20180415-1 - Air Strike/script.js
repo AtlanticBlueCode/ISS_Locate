@@ -58,14 +58,13 @@ function startup (){
 //  window.statusbar= false;
 //  window.toolbar = false;
   console.log("Start");
-  newFrame();
+  canvases[3].context.fillStyle = 'rgba(0,0, 255	,0.4)';
+  canvases[3].context.fillRect(0, 0,width, height);
+    newFrame();
 };
 
 
 function newFrame() {
-
-  canvases[3].context.fillStyle = 'rgba(255,0, 255	,1)';
-  canvases[3].context.fillRect(0, 0,width, heigth);
 
   canvases[2].clear();  // Explosion
   canvases[1].clear();  // Base
@@ -73,9 +72,10 @@ function newFrame() {
 //    context.fillStyle = 'rgba(255, 255, 255	,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
 //    context.fillRect(0, 0,width, heigth); //limpar bem zona de dados  
 
-  canvases[1].context.strokeText("Live Cannonballs:         " + cannonballs.length, 10, 50);
-  canvases[1].context.strokeText("Live Targets:         " + targets.length, 10, 70);
-  canvases[1].context.strokeText("Kills:         " + kills, 10, 100);
+  canvases[1].context.fillStyle = "black";
+  canvases[1].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
+  canvases[1].context.fillText("Live Targets:         " + targets.length, 10, 70);
+  canvases[1].context.fillText("Kills:         " + kills, 10, 100);
 
 /*
   canvases[1].context.strokeText("Base Position:            " + base.position._x+" "+ base.position._y, 10, 70);
