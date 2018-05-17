@@ -6,6 +6,7 @@ setupEventListeners();
 canvases.push(new Canvas("Canvas_0"));
 canvases.push(new Canvas("Canvas_1"));
 canvases.push(new Canvas("Canvas_2"));
+canvases.push(new Canvas("Canvas_3"));
 
 let utils = new Utils;
 
@@ -63,9 +64,14 @@ function startup (){
 
 function newFrame() {
 
-  canvases[2].clear();
-  canvases[1].clear();
-  canvases[0].clear();
+  canvases[3].context.fillStyle = 'rgba(255,0, 255	,1)';
+  canvases[3].context.fillRect(0, 0,width, heigth);
+
+  canvases[2].clear();  // Explosion
+  canvases[1].clear();  // Base
+  canvases[0].clear();  // Cannonball & Targets
+//    context.fillStyle = 'rgba(255, 255, 255	,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
+//    context.fillRect(0, 0,width, heigth); //limpar bem zona de dados  
 
   canvases[1].context.strokeText("Live Cannonballs:         " + cannonballs.length, 10, 50);
   canvases[1].context.strokeText("Live Targets:         " + targets.length, 10, 70);
