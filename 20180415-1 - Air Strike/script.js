@@ -58,7 +58,7 @@ function startup (){
 //  window.statusbar= false;
 //  window.toolbar = false;
   console.log("Start");
-  canvases[3].context.fillStyle = 'rgba(0,255, 255	,0.4)';
+  canvases[3].context.fillStyle = 'rgba(0,255, 100	,0.4)';
   canvases[3].context.fillRect(0, 0,width, height);
     newFrame();
 };
