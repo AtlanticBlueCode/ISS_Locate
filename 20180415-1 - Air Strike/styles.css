@@ -4,6 +4,7 @@ html {
   padding:0;
   width:100%;
   height:100%;
+  position: fixed;
   /*margin do Body por default é 8px */
   /*border: 5px solid red;*/
 }

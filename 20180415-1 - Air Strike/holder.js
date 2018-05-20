@@ -8,7 +8,7 @@ class Holder {
 
     this.radius = base.radius;
 
-    this.startingColor = "black";
+    this.startingColor = "pink";
     this.color = this.startingColor;
 
   };
