@@ -54,23 +54,38 @@ function spawnTarget (){
 
 window.onload = startup();
 
+
+function drawLandscape(){
+  canvases[3].context.drawImage(
+    imageLandscape, // Imagem da sprites sheet toda
+    0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
+    imageLandscape.width, imageLandscape.height, // Largura e Altura da frame a recortar
+    0 , 0, // Coordenadas do canto sup esquerdo destino no canvas
+    width, height  // Largura e Altura da frame a desenhar
+  );
+  imageLandscape.addEventListener('load', function(){console.log("Loaded")});
+}
+
 function startup (){
 //  window.statusbar= false;
 //  window.toolbar = false;
   console.log("Start");
-  canvases[3].context.fillStyle = 'rgba(0,0, 255	,0.4)';
-  canvases[3].context.fillRect(0, 0,width, height);
-    newFrame();
+//  canvases[3].context.fillStyle = 'rgba(0,0, 255	,0.4)';
+//  canvases[3].context.fillRect(0, 0,width, height);
+newFrame();
 };
 
 
 function newFrame() {
+
+  drawLandscape();
 
   canvases[2].clear();  // Explosion
   canvases[1].clear();  // Base
   canvases[0].clear();  // Cannonball & Targets
 //    context.fillStyle = 'rgba(255, 255, 255	,1)'; // zona para dados sobre a particula com fundo 100% limpo (opacity 1)
 //    context.fillRect(0, 0,width, heigth); //limpar bem zona de dados  
+
 
   canvases[1].context.fillStyle = "black";
   canvases[1].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
