@@ -18,8 +18,8 @@ let holderOpposite = new Holder; // Holder auxiliar para a fisga se mexer bem ao
 let springTension = 0.2;
 let springForce = new Vector(0.00001, 0.000001);
 let springStretch = new Vector;
-let springStretchHidden = new Vector; 
-let springStretchOpposite = new Vector; 
+let springStretchHidden = new Vector;
+let springStretchOpposite = new Vector;
 let springStretchMax = new Vector;
 springStretchMax.setLength(base.range);
 
@@ -47,45 +47,48 @@ let targetSpawnCouter = 1000;
 
 let kills = 0;
 
-function spawnTarget (){
+function spawnTarget() {
   targets.push(new Target());
 }
 
 window.onload = startup();
 
-function startup (){
-console.log("Start");
-newFrame();
+function startup() {
+  console.log("Start");
+  newFrame();
 };
 
 
 function newFrame() {
 
-  canvases[2].clear();  // Explosion
-  canvases[1].clear();  // Base
-  canvases[0].clear();  // Cannonball & Targets
+  canvases[2].clear(); // Explosion
+  canvases[1].clear(); // Base
+  canvases[0].clear(); // Cannonball & Targets
 
   canvases[1].context.fillStyle = "black";
   canvases[1].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
   canvases[1].context.fillText("Live Targets:         " + targets.length, 10, 70);
   canvases[1].context.fillText("Kills:         " + kills, 10, 100);
 
-/*
-  canvases[1].context.strokeText("Base Position:            " + base.position._x+" "+ base.position._y, 10, 70);
-  canvases[1].context.strokeText("Holder Position:          " + holder.position._x+" "+ holder.position._y, 10, 90);
-  canvases[1].context.strokeText("Holder Hidden Position:   " + holderHidden.position._x+" "+ holderHidden.position._y, 10, 110);
-  canvases[1].context.strokeText("Holder Opposite Position: " + holderOpposite.position._x+" "+ holderOpposite.position._y, 10, 130);
+  /*
+    canvases[1].context.strokeText("Base Position:            " + base.position._x+" "+ base.position._y, 10, 70);
+    canvases[1].context.strokeText("Holder Position:          " + holder.position._x+" "+ holder.position._y, 10, 90);
+    canvases[1].context.strokeText("Holder Hidden Position:   " + holderHidden.position._x+" "+ holderHidden.position._y, 10, 110);
+    canvases[1].context.strokeText("Holder Opposite Position: " + holderOpposite.position._x+" "+ holderOpposite.position._y, 10, 130);
 
-  canvases[1].context.strokeText("Holder Opposite Stretch:  " + springStretchOpposite._x+" "+ springStretchOpposite._y, 10, 160);
-*/
+    canvases[1].context.strokeText("Holder Opposite Stretch:  " + springStretchOpposite._x+" "+ springStretchOpposite._y, 10, 160);
+  */
 
-for (let i = explosions.length - 1; i >= 0; i--) {
-  explosions[i].draw();
-  if (explosions[i].exploding = false) { explosions.splice(i, 1) };
-};
+  for (let i = explosions.length - 1; i >= 0; i--) {
+    explosions[i].draw();
+    if (explosions[i].exploding = false) {
+      explosions.splice(i, 1)
+    };
+  };
 
-  targetSpawnCouter += utils.randomRange (0,5);
-  if (targetSpawnCouter> 400) {
+  targetSpawnCouter += utils.randomRange(0, 5);
+
+  if (targetSpawnCouter > 400) {
     spawnTarget();
     targetSpawnCouter = 0;
   };
@@ -96,14 +99,14 @@ for (let i = explosions.length - 1; i >= 0; i--) {
     targets[i].draw();
     if (targets[i].withinEdge == false) {
       targets.splice(i, 1)
-    }
-
-    for (let j = cannonballs.length -1 ; j >= 0; j--){
-      if(targets[i].hit(cannonballs[j]) == true){
-        explosions.push(new Explosion(cannonballs[j].position._x,cannonballs[j].position._y));
-        targets.splice(i, 1);
-        cannonballs.splice(j,1);
-        kills +=1;
+    } else {
+      for (let j = cannonballs.length - 1; j >= 0; j--) {
+        if (targets[i].hit(cannonballs[j]) == true) {
+          explosions.push(new Explosion(cannonballs[j].position._x, cannonballs[j].position._y));
+          targets.splice(i, 1);
+          cannonballs.splice(j, 1);
+          kills += 1;
+        }
       }
     }
   }
@@ -144,13 +147,13 @@ for (let i = explosions.length - 1; i >= 0; i--) {
 
   holderOpposite.position = base.position.add(springStretch);
   springStretchOpposite = holderOpposite.position.subtract(base.position);
-  springStretchOpposite.multiplyBy(Math.pow(springTension*10,2));
+  springStretchOpposite.multiplyBy(Math.pow(springTension * 10, 2));
   holderOpposite.position = base.position.add(springStretchOpposite);
 
   base.draw();
   holder.draw();
-//  holderHidden.draw();
-//  holderOpposite.draw();
+  //  holderHidden.draw();
+  //  holderOpposite.draw();
 
 
 

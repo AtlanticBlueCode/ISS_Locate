@@ -11,7 +11,7 @@ html {
 
 body {
   background-image: url("Assets/landscape/Landscape2.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 
