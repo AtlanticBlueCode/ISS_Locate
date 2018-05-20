@@ -6,7 +6,6 @@ setupEventListeners();
 canvases.push(new Canvas("Canvas_0"));
 canvases.push(new Canvas("Canvas_1"));
 canvases.push(new Canvas("Canvas_2"));
-canvases.push(new Canvas("Canvas_3"));
 
 let utils = new Utils;
 
