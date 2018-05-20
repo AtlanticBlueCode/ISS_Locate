@@ -66,6 +66,7 @@ class Target {
     canvases[0].context.stroke();
 */
 
+    canvases[0].context.beginPath();
     canvases[0].context.save();
     canvases[0].context.translate(this.position._x, this.position._y);
     //canvases[0].context.globalAlpha=0.5;
