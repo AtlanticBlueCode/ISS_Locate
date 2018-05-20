@@ -25,7 +25,7 @@ class Canvas {
   }
 };
 
-
+/*
 document.body.addEventListener('touchmove', function(event) {
   console.log(event.source);
   //if (event.source == document.body)
@@ -39,3 +39,4 @@ window.onresize = function() {
 $(function() {
   window.onresize();
 });
+*/

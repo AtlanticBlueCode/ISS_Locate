@@ -1,6 +1,6 @@
 function setupEventListeners() {
   mouseEventListeners();
-  //  touchEventListeners();
+  touchEventListeners();
   //  keyEventListeners();
   //  resizeEventListeners();
 };
@@ -55,10 +55,10 @@ function mouseMove(event) {
 };
 
 function mouseDown(event) {
-  mouseClicked = true;
   mouseX = event.clientX;
   mouseY = event.clientY;
 
+  mouseClicked = true;
   if (utils.distanceXY(mouseX, mouseY, base.position._x,base.position._y) <= base.radius) {
     slingGrabbed = true;
     nextCannonballColor = utils.getRandomColorHEX();
@@ -71,18 +71,18 @@ function mouseDown(event) {
 };
 
 function mouseUp(event) {
-  mouseClicked = false;
   mouseX = event.clientX;
   mouseY = event.clientY;
+
+  mouseClicked = false;
 
   // Essencial porque se não o Holder parte com toda a força acumulada durante o puxar da mola até à largada
   // Importante estar aqui para ter efeito sempre que se larga Mouse
   // Mesmo que não seja dentro do Range
   holder.velocity.setLength(0.000001);
 
-  if (slingGrabbed) {slingShot()};
-
   if (slingGrabbed) {
+    slingShot();
     slingGrabbed = false;
     console.log("Released Sling")
   };
@@ -117,8 +117,16 @@ function touchEventListeners() {
 function touchStart(event) {
   //  event.preventDefault();
 
-  touchStartX = touchX = Math.round(event.changedTouches[0].clientX);
-  touchStartY = touchY = Math.round(event.changedTouches[0].clientY);
+  mouseX = touchStartX = touchX = Math.round(event.changedTouches[0].clientX);
+  mouseY = touchStartY = touchY = Math.round(event.changedTouches[0].clientY);
+
+  mouseClicked = true;
+  if (utils.distanceXY(mouseX, mouseY, base.position._x,base.position._y) <= base.radius) {
+    slingGrabbed = true;
+    nextCannonballColor = utils.getRandomColorHEX();
+    holder.color = nextCannonballColor;
+    console.log("Grabbed Sling!");
+  };
 
   touchStartDate = new Date();
 
@@ -128,8 +136,8 @@ function touchStart(event) {
 function touchMove(event) {
   //  event.preventDefault();
 
-  touchX = Math.round(event.changedTouches[0].clientX);
-  touchY = Math.round(event.changedTouches[0].clientY);
+  mouseX = touchX = Math.round(event.changedTouches[0].clientX);
+  mouseY = touchY = Math.round(event.changedTouches[0].clientY);
 
   console.log("Touch       => " + "X: " + touchX + " " + "Y: " + touchY + " " + "Time: " + sayTime());
 };
@@ -137,8 +145,21 @@ function touchMove(event) {
 function touchEnd(event) {
   //  event.preventDefault();
 
-  touchEndX = Math.round(event.changedTouches[0].clientX);
-  touchEndY = Math.round(event.changedTouches[0].clientY);
+  mouseX = touchEndX = Math.round(event.changedTouches[0].clientX);
+  mouseY = touchEndY = Math.round(event.changedTouches[0].clientY);
+
+  mouseClicked = false;
+
+  // Essencial porque se não o Holder parte com toda a força acumulada durante o puxar da mola até à largada
+  // Importante estar aqui para ter efeito sempre que se larga Mouse
+  // Mesmo que não seja dentro do Range
+  holder.velocity.setLength(0.000001);
+
+  if (slingGrabbed) {
+    slingShot();
+    slingGrabbed = false;
+    console.log("Released Sling")
+  };
 
   touchEndDate = new Date();
   touchDuration = touchEndDate - touchStartDate;
