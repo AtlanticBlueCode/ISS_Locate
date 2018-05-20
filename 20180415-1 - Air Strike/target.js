@@ -14,8 +14,8 @@ class Target {
     this.alive = true;
 
     this.image = imageAirplane;
-    this.width = this.image.width * 0.2;
-    this.height = this.image.height * 0.2;
+    this.width = this.image.width * 0.15;
+    this.height = this.image.height * 0.15;
 
     this.waver = 0;
     this.waving = 0;
@@ -61,7 +61,7 @@ class Target {
     canvases[0].context.beginPath();
     canvases[0].context.fillStyle = this.color;
     canvases[0].context.strokeStyle = "rgba(0,0,0,1)";
-    canvases[0].context.rect(this.position._x, this.position._y, this.image.width*0.25, this.image.height*0.25);
+    canvases[0].context.rect(this.position._x, this.position._y, this.image.width*0.15, this.image.height*0.15);
     canvases[0].context.fill();
     canvases[0].context.stroke();
 */

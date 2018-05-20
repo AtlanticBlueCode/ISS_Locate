@@ -2,7 +2,7 @@
 class Base {
   constructor (){
     this.position = new Vector(55,height-55);
-    this.radius = 8;
+    this.radius = 15;
     this.range = 50;
 
   };

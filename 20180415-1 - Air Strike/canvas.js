@@ -21,6 +21,8 @@ class Canvas {
 
   clear (){
     this.context.clearRect(0, 0, this.width, this.height);
+//    this.context.fillStyle  = "rgba(255,255,255,1)";
+//    this.context.fillRect(0, 0, this.width, this.height);
     this.context.strokeStyle = "black";
   }
 };
