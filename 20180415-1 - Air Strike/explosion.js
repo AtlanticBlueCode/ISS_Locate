@@ -28,8 +28,8 @@ class Explosion{
         this.explosionSprite.thisFrameY = Math.floor(this.explosionSprite.countFrame / this.explosionSprite.totalColumns) * explosionImage.height / this.explosionSprite.totalRows; // y definido por countFrame / 12 (frames por linha) X height de cada frame
 
         //desenhar a explosão
-          canvases[2].context.beginPath();
-          canvases[2].context.drawImage(
+          canvases[3].context.beginPath();
+          canvases[3].context.drawImage(
             explosionImage, // Imagem da sprites sheet toda
             this.explosionSprite.thisFrameX, this.explosionSprite.thisFrameY, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
             explosionImage.width / this.explosionSprite.totalColumns, explosionImage.height / this.explosionSprite.totalRows, // Largura e Altura da frame a recortar

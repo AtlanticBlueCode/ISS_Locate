@@ -14,12 +14,12 @@ class Holder {
   };
 
   draw(){
-    canvases[1].context.beginPath();
-    canvases[1].context.fillStyle = this.color;
-    canvases[1].context.strokeStyle = "black";
-    canvases[1].context.arc(this.position._x, this.position._y,this.radius, 0, 2 * Math.PI);
-    canvases[1].context.fill();
-    canvases[1].context.stroke();
+    canvases[2].context.beginPath();
+    canvases[2].context.fillStyle = this.color;
+    canvases[2].context.strokeStyle = "black";
+    canvases[2].context.arc(this.position._x, this.position._y,this.radius, 0, 2 * Math.PI);
+    canvases[2].context.fill();
+    canvases[2].context.stroke();
   };
 
   move() {

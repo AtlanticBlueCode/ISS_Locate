@@ -3,9 +3,10 @@
 
 setupEventListeners();
 
-canvases.push(new Canvas("Canvas_0"));
-canvases.push(new Canvas("Canvas_1"));
-canvases.push(new Canvas("Canvas_2"));
+canvases.push(new Canvas("Canvas_0")); // Landscape
+canvases.push(new Canvas("Canvas_1")); // Cannonnballs, Targets
+canvases.push(new Canvas("Canvas_2")); // Linha, Scoreboard, Bases, Holder 
+canvases.push(new Canvas("Canvas_3")); // Explosions
 
 let utils = new Utils;
 
@@ -24,9 +25,7 @@ let springStretchMax = new Vector;
 springStretchMax.setLength(base.range);
 
 let cannonballs = [];
-
 let targets = [];
-
 let explosions = [];
 
 function slingShot() {
@@ -36,27 +35,27 @@ function slingShot() {
 }
 
 function line(point_a, point_b, color) {
-  canvases[1].context.beginPath();
-  canvases[1].context.strokeStyle = color;
-  canvases[1].context.moveTo(point_a.position._x, point_a.position._y);
-  canvases[1].context.lineTo(point_b.position._x, point_b.position._y);
-  canvases[1].context.stroke();
+  canvases[2].context.beginPath();
+  canvases[2].context.strokeStyle = color;
+  canvases[2].context.moveTo(point_a.position._x, point_a.position._y);
+  canvases[2].context.lineTo(point_b.position._x, point_b.position._y);
+  canvases[2].context.stroke();
 };
 
 let targetSpawnCouter = 1000;
 
 let kills = 0;
 
-function drawLandscape(){
-  canvases[0].context.beginPath();
-  canvases[0].context.drawImage(
+function drawLandscape() {
+  canvases[1].context.beginPath();
+  canvases[1].context.drawImage(
     imageLandscape, // Imagem da sprites sheet toda
     0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
-    imageLandscape.width,imageLandscape.height, // Largura e Altura da frame a recortar
-    0 , 0, // Coordenadas do canto sup esquerdo destino no canvas
-    imageLandscape.width ,imageLandscape.height  // Largura e Altura da frame a desenhar
+    imageLandscape.width, imageLandscape.height, // Largura e Altura da frame a recortar
+    0, 0, // Coordenadas do canto sup esquerdo destino no canvas
+    imageLandscape.width, imageLandscape.height // Largura e Altura da frame a desenhar
   );
-  canvases[0].context.restore();
+  canvases[1].context.restore();
 }
 
 function spawnTarget() {
@@ -74,63 +73,49 @@ function startup() {
 
 function newFrame() {
 
-  canvases[2].clear(); // Explosion
-  canvases[1].clear(); // Base
-  canvases[0].clear(); // Cannonball & Targets
-
-  canvases[1].context.fillStyle = "black";
-  canvases[1].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
-  canvases[1].context.fillText("Live Targets:         " + targets.length, 10, 70);
-  canvases[1].context.fillText("Kills:         " + kills, 10, 100);
-
-  /*
-    canvases[1].context.strokeText("Base Position:            " + base.position._x+" "+ base.position._y, 10, 70);
-    canvases[1].context.strokeText("Holder Position:          " + holder.position._x+" "+ holder.position._y, 10, 90);
-    canvases[1].context.strokeText("Holder Hidden Position:   " + holderHidden.position._x+" "+ holderHidden.position._y, 10, 110);
-    canvases[1].context.strokeText("Holder Opposite Position: " + holderOpposite.position._x+" "+ holderOpposite.position._y, 10, 130);
-
-    canvases[1].context.strokeText("Holder Opposite Stretch:  " + springStretchOpposite._x+" "+ springStretchOpposite._y, 10, 160);
-  */
-
-  for (let i = explosions.length - 1; i >= 0; i--) {
-    explosions[i].draw();
-    if (explosions[i].exploding = false) {
-      explosions.splice(i, 1)
-    };
-  };
+  canvases[3].clear(); // Explosion
+  canvases[2].clear(); // Linha, Scoreboard, Bases, Holder
+  canvases[1].clear(); // Cannonball & Targets
+  //  canvases[0].clear(); // Landscape
 
   targetSpawnCouter += utils.randomRange(0, 5);
-
-  if (targetSpawnCouter > 400) {
+  if (targetSpawnCouter > 100) {
     spawnTarget();
     targetSpawnCouter = 0;
   };
 
-  for (let i = targets.length - 1; i >= 0; i--) {
-    targets[i].edge();
+  canvases[2].context.fillStyle = "black";
+  canvases[2].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
+  canvases[2].context.fillText("Live Targets:         " + targets.length, 10, 70);
+  canvases[2].context.fillText("Kills:         " + kills, 10, 100);
+
+  for (let i = 0; i < targets.length; i++) {
     targets[i].move();
     targets[i].draw();
-    if (targets[i].withinEdge == false) {
-      targets.splice(i, 1)
-    } else {
-      for (let j = cannonballs.length - 1; j >= 0; j--) {
-        if (targets[i].hit(cannonballs[j]) == true) {
-          explosions.push(new Explosion(cannonballs[j].position._x, cannonballs[j].position._y));
-          targets.splice(i, 1);
-          cannonballs.splice(j, 1);
-          kills += 1;
-        }
-      }
-    }
-  }
+    targets[i].edge();
+    if (targets[i].withinEdge == false) {targets.splice(i, 1)};
+  };
+
+  for (let i = explosions.length - 1; i >= 0; i--) {
+    explosions[i].draw();
+    if (explosions[i].exploding = false) {explosions.splice(i, 1)};
+  };
 
   for (let i = cannonballs.length - 1; i >= 0; i--) {
-    cannonballs[i].edge();
     cannonballs[i].move();
     cannonballs[i].draw();
-    if (cannonballs[i].withinEdge == false) {
-      cannonballs.splice(i, 1)
+    for (let j = targets.length - 1; j >= 0; j--){
+      if (targets[j].hit(cannonballs[i]) == true) {
+        targets.splice(j, 1);
+        cannonballs[i].alive = false; //**********//
+        kills += 1;
+        explosions.push(new Explosion(cannonballs[i].position._x, cannonballs[i].position._y));
+      }
     }
+    cannonballs[i].edge();
+    if (cannonballs[i].withinEdge == false || cannonballs[i].alive == false) {
+      cannonballs.splice(i, 1)
+    };
   }
 
   holderHidden.position._x = mouseX;
@@ -149,9 +134,7 @@ function newFrame() {
     line(base, holderOpposite, 'lightgrey');
   };
 
-  if (!slingGrabbed) {
-    holder.move()
-  };
+  if (!slingGrabbed) {holder.move()};
 
   springStretch = base.position.subtract(holder.position);
   springStretchHidden = base.position.subtract(holderHidden.position);
@@ -167,8 +150,6 @@ function newFrame() {
   holder.draw();
   //  holderHidden.draw();
   //  holderOpposite.draw();
-
-
 
   requestAnimationFrame(newFrame);
 };

@@ -49,35 +49,35 @@ class Target {
 
   draw() {
 /*
-    canvases[0].context.beginPath();
-    canvases[0].context.fillStyle = this.color;
-    canvases[0].context.strokeStyle = "rgba(0,0,0,1)";
-    canvases[0].context.arc(this.position._x, this.position._y, this.radius, 0, 2 * Math.PI);
-    canvases[0].context.fill();
-    canvases[0].context.stroke();
+    canvases[1].context.beginPath();
+    canvases[1].context.fillStyle = this.color;
+    canvases[1].context.strokeStyle = "rgba(0,0,0,1)";
+    canvases[1].context.arc(this.position._x, this.position._y, this.radius, 0, 2 * Math.PI);
+    canvases[1].context.fill();
+    canvases[1].context.stroke();
 */
 
 /*
-    canvases[0].context.beginPath();
-    canvases[0].context.fillStyle = this.color;
-    canvases[0].context.strokeStyle = "rgba(0,0,0,1)";
-    canvases[0].context.rect(this.position._x, this.position._y, this.image.width*0.15, this.image.height*0.15);
-    canvases[0].context.fill();
-    canvases[0].context.stroke();
+    canvases[1].context.beginPath();
+    canvases[1].context.fillStyle = this.color;
+    canvases[1].context.strokeStyle = "rgba(0,0,0,1)";
+    canvases[1].context.rect(this.position._x, this.position._y, this.image.width*0.15, this.image.height*0.15);
+    canvases[1].context.fill();
+    canvases[1].context.stroke();
 */
 
-    canvases[0].context.beginPath();
-    canvases[0].context.save();
-    canvases[0].context.translate(this.position._x, this.position._y);
-    //canvases[0].context.globalAlpha=0.5;
-    canvases[0].context.drawImage(
+    canvases[1].context.beginPath();
+    canvases[1].context.save();
+    canvases[1].context.translate(this.position._x, this.position._y);
+    //canvases[1].context.globalAlpha=0.5;
+    canvases[1].context.drawImage(
       this.image, // Imagem da sprites sheet toda
       0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
       this.image.width, this.image.height, // Largura e Altura da frame a recortar
       0 , 0, // Coordenadas do canto sup esquerdo destino no canvas
       this.width , this.height  // Largura e Altura da frame a desenhar
     );
-    canvases[0].context.restore();
+    canvases[1].context.restore();
   }
 
   hit (circle){

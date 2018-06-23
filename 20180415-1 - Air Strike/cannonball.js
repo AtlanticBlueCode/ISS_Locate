@@ -39,11 +39,11 @@ class Cannonball {
   };
 
   draw() {
-    canvases[0].context.beginPath();
-    canvases[0].context.fillStyle = this.color;
-    canvases[0].context.strokeStyle = "rgba(0,0,0,1)";
-    canvases[0].context.arc(this.position._x, this.position._y, this.radius, 0, 2 * Math.PI);
-    canvases[0].context.fill();
-    canvases[0].context.stroke();
+    canvases[1].context.beginPath();
+    canvases[1].context.fillStyle = this.color;
+    canvases[1].context.strokeStyle = "rgba(0,0,0,1)";
+    canvases[1].context.arc(this.position._x, this.position._y, this.radius, 0, 2 * Math.PI);
+    canvases[1].context.fill();
+    canvases[1].context.stroke();
   }
 }
