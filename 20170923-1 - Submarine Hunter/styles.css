@@ -1,0 +1,23 @@
+html {
+  margin: 0;          /* margin do Body por default é 8px */
+  padding:0;
+  width:100%;
+  height:100%;
+  position: fixed;    /* For the screen not scroll vertically with touch */
+  overflow: hidden;   /* To avoid scrollbars appearing because Canvas is by default an inline element */
+  /*border: 5px solid red;*/
+}
+
+
+body {
+  background-size: cover;
+}
+
+
+canvas{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  /*border: 5px solid blue;*/
+}
