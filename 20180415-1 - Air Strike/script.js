@@ -53,7 +53,7 @@ function drawLandscape() {
     0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
     imageLandscape.width, imageLandscape.height, // Largura e Altura da frame a recortar
     0, 0, // Coordenadas do canto sup esquerdo destino no canvas
-    canvases[0].width, canvases[0].height // Largura e Altura da frame a desenhar
+    width, height // Largura e Altura da frame a desenhar
   );
 //  canvases[0].context.restore();
 }
