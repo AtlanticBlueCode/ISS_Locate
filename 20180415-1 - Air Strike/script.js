@@ -47,15 +47,15 @@ let targetSpawnCouter = 1000;
 let kills = 0;
 
 function drawLandscape() {
-  canvases[1].context.beginPath();
-  canvases[1].context.drawImage(
+  canvases[0].context.beginPath();
+  canvases[0].context.drawImage(
     imageLandscape, // Imagem da sprites sheet toda
     0, 0, // Coordenadas do canto sup esquerdo da frame a recortar da imagem
     imageLandscape.width, imageLandscape.height, // Largura e Altura da frame a recortar
     0, 0, // Coordenadas do canto sup esquerdo destino no canvas
     imageLandscape.width, imageLandscape.height // Largura e Altura da frame a desenhar
   );
-  canvases[1].context.restore();
+  canvases[0].context.restore();
 }
 
 function spawnTarget() {
@@ -76,7 +76,7 @@ function newFrame() {
   canvases[3].clear(); // Explosion
   canvases[2].clear(); // Linha, Scoreboard, Bases, Holder
   canvases[1].clear(); // Cannonball & Targets
-  //  canvases[0].clear(); // Landscape
+  //canvases[0].clear(); // Landscape
 
   targetSpawnCouter += utils.randomRange(0, 5);
   if (targetSpawnCouter > 100) {
