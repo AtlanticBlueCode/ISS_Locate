@@ -61,7 +61,7 @@ function mouseDown(event) {
   mouseClicked = true;
   if (utils.distanceXY(mouseX, mouseY, base.position._x,base.position._y) <= base.radius) {
     slingGrabbed = true;
-    nextCannonballColor = utils.getRandomColorHEX();
+    nextCannonballColor = "black" //utils.getRandomColorHEX();
     holder.color = nextCannonballColor;
     console.log("Grabbed Sling!");
   };

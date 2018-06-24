@@ -66,20 +66,21 @@ window.onload = startup();
 
 function startup() {
   console.log("Start");
-  drawLandscape();
   newFrame();
 };
 
 
 function newFrame() {
 
+  drawLandscape();
+
   canvases[3].clear(); // Explosion
   canvases[2].clear(); // Linha, Scoreboard, Bases, Holder
   canvases[1].clear(); // Cannonball & Targets
-  //canvases[0].clear(); // Landscape
+  canvases[0].clear(); // Landscape
 
   targetSpawnCouter += utils.randomRange(0, 5);
-  if (targetSpawnCouter > 100) {
+  if (targetSpawnCouter > 350) {
     spawnTarget();
     targetSpawnCouter = 0;
   };
