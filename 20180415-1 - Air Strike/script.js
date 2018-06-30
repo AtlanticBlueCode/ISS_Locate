@@ -1,6 +1,17 @@
 // Se não quiser usar p5.js => usar o script.js no HTML
 // Neste caso o loop far-se-á através da function newFrame()
 
+if("serviceWorker" in navigator){
+  try {
+    navigator.serviceWorker.register("service-worker.js");    // servive-worker.js file has to be in the root of the application, next to html file
+    console.log("Service Worker Registered!!!");
+  }
+  catch (error){
+    console.log("Service Worker NOT Registered!!!");
+  }
+}
+
+
 setupEventListeners();
 
 canvases.push(new Canvas("Canvas_0")); // Landscape
