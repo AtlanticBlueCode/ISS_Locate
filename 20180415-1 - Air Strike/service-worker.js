@@ -14,7 +14,7 @@ const staticAssets = [
   "./",
   "./styles.css",
   "./script.js",
-  "./cacheupdate.js",
+//  "./cacheupdate.js",
   "./canvas.js",
   "./utils.js",
   "./vector.js",
