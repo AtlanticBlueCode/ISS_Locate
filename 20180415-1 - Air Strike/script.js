@@ -97,7 +97,7 @@ function newFrame() {
   };
 
   canvases[2].context.fillStyle = "black";
-  canvases[2].context.fillText("V20180629-01" + kills, 10, 20);
+  canvases[2].context.fillText("V 20180629-01", 10, 20);
   canvases[2].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
   canvases[2].context.fillText("Live Targets:         " + targets.length, 10, 70);
   canvases[2].context.fillText("Kills:         " + kills, 10, 100);
