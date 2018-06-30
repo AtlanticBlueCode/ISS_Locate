@@ -4,7 +4,7 @@ html {
   width:100%;
   height:100%;
   position: fixed;    /* For the screen not scroll vertically with touch */
-  overflow: hidden;   /* To avoid scrollbars appearing because Canvas is by default an inline element */
+  overflow: hidden;   /* To avoid scrollbars appearing because Canvas is by default an inline element  */
   /*border: 5px solid red;*/
 }
 
