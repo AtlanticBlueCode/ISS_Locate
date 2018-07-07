@@ -6,4 +6,4 @@ imageAirplane.src = "Assets/planes/Luftwaffe.png"; // Set source path
 
 const imageLandscape = new Image();   // Create new img element
 imageLandscape.onload = function () {console.log("Landscape loaded!")}
-imageLandscape.src = "Assets/landscape/Landscape3.jpg"; // Set source path
+imageLandscape.src = "Assets/landscape/Landscape2.jpg"; // Set source path
