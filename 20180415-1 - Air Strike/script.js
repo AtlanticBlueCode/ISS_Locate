@@ -19,7 +19,7 @@ if("serviceWorker" in navigator){
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('../service-worker.js')
+      .register('service-worker.js')
       .then(reg => console.log('Service Worker: Registered (Pages)'))
       .catch(err => console.log('Service Worker: Error:' + err ));
   });
@@ -114,7 +114,7 @@ function newFrame() {
   };
 
   canvases[2].context.fillStyle = "black";
-  canvases[2].context.fillText("V 20180804-01", 10, 20);
+  canvases[2].context.fillText("V 20180804-02", 10, 20);
   canvases[2].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
   canvases[2].context.fillText("Live Targets:         " + targets.length, 10, 70);
   canvases[2].context.fillText("Kills:         " + kills, 10, 100);
