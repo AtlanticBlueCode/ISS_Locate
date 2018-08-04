@@ -1,6 +1,10 @@
 // Se não quiser usar p5.js => usar o script.js no HTML
 // Neste caso o loop far-se-á através da function newFrame()
 
+// Service Worker
+// Make sure Service Worker is supported
+
+/*
 if("serviceWorker" in navigator){
   try {
     navigator.serviceWorker.register("service-worker.js");    // servive-worker.js file has to be in the root of the application, next to html file
@@ -10,7 +14,20 @@ if("serviceWorker" in navigator){
     console.log("Service Worker NOT Registered!!!");
   }
 }
+*/
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('../service-worker.js')
+      .then(reg => console.log('Service Worker: Registered (Pages)'))
+      .catch(err => console.log(`Service Worker: Error: ${err}`));
+  });
+}
+
+
+
+// App
 
 setupEventListeners();
 

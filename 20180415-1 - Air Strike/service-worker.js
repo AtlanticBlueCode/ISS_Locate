@@ -8,77 +8,43 @@
 // Cache all website components so we get a fast start up time for the application + display something if user is offline
 
 
-// First, define an array of our static assets
 
-const staticAssets = [
-  "./",
-  "./styles.css",
-  "./script.js",
-//  "./cacheupdate.js",
-  "./canvas.js",
-  "./utils.js",
-  "./vector.js",
-  "./eventlisteners.js",
-  "./image.js",
-  "./base.js",
-  "./holder.js",
-  "./cannonball.js",
-  "./target.js",
-  "./explosion.js",
-  "./manifest.json",
-  "./Assets/landscape/Landscape2.jpg",
-  "./Assets/planes/Luftwaffe.png",
-  "./Assets/explosion/Sprite Sheet/ExplosionA1.png",
-  "./p5.js"
+const cacheName = 'v2';
 
-];
-
-
-
-self.addEventListener("install", async event => { //This event gets called when a new Service Worker is discovered and gets installed
-  console.log("Install");
-
-  const cache = await caches.open("site-static"); // Aceder à cache do site e dar-lhe um nome
-  cache.addAll(staticAssets); // Esmagar na cache os nossos assets
+// Call Install Event
+self.addEventListener('install', e => {                           // This event gets called when a new Service Worker is discovered and gets installed
+  console.log('Service Worker: Installed');
 });
 
-
-self.addEventListener("fetch", event => { // Fetch events are those sent from our app to the network
-  console.log("Fetch!!");
-
-  const req = event.request; // Aceder ao request
-
-  const url = new URL(req.url);
-
-  if (url.origin === location.origin) {
-    event.respondWith(cacheFirst(req)); // Responder 1º com a função cacheFirst
-  } else {
-    event.respondWith(networkFirst(req)); // Responder 2º com a função networkFirst
-  }
+// Call Activate Event
+self.addEventListener('activate', e => {                          // This event gets called when a new Service Worker is activated                                    
+  console.log('Service Worker: Activated');
+  e.waitUntil(                                                    // Remove unwanted caches
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== cacheName) {
+            console.log('Service Worker: Clearing Old Cache');
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
 });
 
-
-async function cacheFirst(req) {
-  const cachedResponse = await caches.match(req); // Check if there is anything in the cache to start with
-
-  if (cachedResponse) {
-    console.log("From cache!!")
-  } else {
-    console.log("From network!!!")
-  }
-
-  return cachedResponse || fetch(req); // If there is cache, cachedResponse will return it, otherwise we will call fecth(req) to go to the network
-}
-
-
-async function networkFirst(req) {
-  const dynamicCachedResponse = await caches.open("site-dynamic");
-
-  try {
-    const result = await fetch(req); // Try to go to the network
-    cache.put(req, result.clone()); // If sucessfull put that into the cache
-    return result;
-  } catch (error) {
-    return await cache.match(req); // If it fails, resort to whatever is in the cache
-  }
-}
+// Call Fetch Event
+self.addEventListener('fetch', e => {                             // This event gets called when a new fetch event occurs
+  console.log('Service Worker: Fetching');
+  e.respondWith(
+    fetch(e.request)
+        .then(res => {                                            // If successful (which means there is Internet connection) make copy/clone of response
+          const resClone = res.clone();
+          caches.open(cacheName).then(cache => {                  // Open cahce
+            cache.put(e.request, resClone);                       // Add response to cache which stores it for when there will be no connection
+          });
+        return res;
+      })
+      .catch(err => caches.match(e.request).then(res => res))     // If no connection return what is in the cache
+  );
+});
