@@ -1,11 +1,6 @@
 {
-  "name": "Air Strike",
   "short_name": "Air  Strike",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
-  "display": "fullscreen",
-  "orientation": "landscape",
-  "start_url": ".",
+  "name": "Air Strike",
   "icons": [
     {
       "src": "Assets/icon/icon-72x72.png",
@@ -47,5 +42,11 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#2196f3",
+  "theme_color": "red",
+  "display": "standalone",
+  "orientation": "landscape"
 }
