@@ -1,5 +1,21 @@
 "use strict"
 
+// Service Worker
+// Make sure Service Worker is supported
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('service-worker.js')
+      .then(reg => console.log('Service Worker: Registered (Pages)'))
+      .catch(err => console.log('Service Worker: Error:' + err ));
+  });
+}
+
+
+
+// App
+
 let canvasSea = document.getElementById("canvasSea"),
 ctxSea = canvasSea.getContext("2d");
 
@@ -69,13 +85,13 @@ function loop() {
 
   ctxSea.lineWidth = 10;
   ctxSea.fillStyle = "black";
+  ctxSea.fillText("V 20180804-02", 10, 10)
   ctxSea.fillText("Shots: " + shots, 10, 20)
   ctxSea.fillText("Hits: " + hits, 10, 30)
   ctxSea.fillText("Mines: " + mines.length, 10, 40)
   ctxSea.fillText("Submarines: " + submarines.length, 10, 50)
   ctxSea.fillText("Time: " + timeElapsed, 10, 60)
-  
-
+ 
   for (let i = 0; i < submarines.length; i++) {
     submarines[i].move();
     submarines[i].edge();

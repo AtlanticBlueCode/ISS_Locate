@@ -4,18 +4,6 @@
 // Service Worker
 // Make sure Service Worker is supported
 
-/*
-if("serviceWorker" in navigator){
-  try {
-    navigator.serviceWorker.register("service-worker.js");    // servive-worker.js file has to be in the root of the application, next to html file
-    console.log("Service Worker Registered!!!");
-  }
-  catch (error){
-    console.log("Service Worker NOT Registered!!!");
-  }
-}
-*/
-
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker

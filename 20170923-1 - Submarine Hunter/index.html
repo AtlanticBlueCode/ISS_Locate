@@ -3,62 +3,86 @@
 
 <head>
 
+  <!-- Title -->
   <title>Sub Hunter</title>
-	
-	<meta charset="UTF-8">
+
+  <!-- Must -->
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#ffffff">
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="Sub Hunter">
 
-	<link rel="apple-touch-startup-image" href="/Assets/icon/apple-icon.png">
+  <!-- Android -->
+  <meta name="theme-color" content="red">
 
-	<link rel="apple-touch-icon" sizes="57x57" href="Assets/icon/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="Assets/icon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="Assets/icon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="Assets/icon/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="Assets/icon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="Assets/icon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="Assets/icon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="Assets/icon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="Assets/icon/apple-icon-180x180.png">
-	
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/Assets/icon/ms-icon-144x144.png">
+  <!-- iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- If content is set to yes, the web application runs in full-screen mode hiding Safari User Interface Components -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!-- Sets the style of the status bar for a web application. Can be "default", "black" or "black-translucent" -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- Disables automatic detection of possible phone numbers in a webpage in Safari on iOS -->
+  <meta name="apple-mobile-web-app-title" content="Sub Hunter">
+  <!-- Specify a web application title for the launch icon. By default, the <title> tag is used -->
 
-	<link rel="icon" type="image/png" sizes="192x192"  href="Assets/icon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="Assets/icon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="Assets/icon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="Assets/icon/favicon-16x16.png">
-	
-	<link rel="manifest" href="manifest.json">
 
+  <!-- LINK TAGS -->
+
+  <!-- Main Link Tags -->
+  <link rel="icon" type="image/png" sizes="192x192" href="Assets/icon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="Assets/icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="Assets/icon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Assets/icon/favicon-16x16.png">
+
+  <!-- iOS -->
+  <!-- To specify multiple icons for different device resolutions -->
+  <link rel="apple-touch-icon" sizes="57x57" href="Assets/icon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="Assets/icon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="Assets/icon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="Assets/icon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="Assets/icon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="Assets/icon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="Assets/icon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="Assets/icon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/icon/apple-icon-180x180.png">
+
+  <!-- Startup Image -->
+  <link rel="apple-touch-startup-image" href="/Assets/icon/apple-icon.png">
+  <!-- Specify a launch screen image for iOS that is displayed while your web application launches -->
+
+  <!-- Manifest.json -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 
-  
+
 </head>
 
 <body>
 
-	<style> body {padding: 0; margin: 0;} </style>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
 
-	<canvas id="canvasSea"></canvas>
-	<canvas id="canvasExplosion"></canvas>
-  
+  <canvas id="canvasSea"></canvas>
+  <canvas id="canvasExplosion"></canvas>
 
-	<script src="landscape.js"></script>
-	<script src="utils.js"></script>
-	<script src="vector.js"></script>
-	<script src="reloader.js"></script>
-	<script src="keycontrols.js"></script>
-	<script src="boat.js"></script>
-	<script src="mine.js"></script>
-	<script src="submarine.js"></script>
-	<script src="explosion.js"></script>
-	<script src="script.js"></script>
+
+  <script src="landscape.js"></script>
+  <script src="service-worker.js"></script>
+  <script src="utils.js"></script>
+  <script src="vector.js"></script>
+  <script src="reloader.js"></script>
+  <script src="keycontrols.js"></script>
+  <script src="boat.js"></script>
+  <script src="mine.js"></script>
+  <script src="submarine.js"></script>
+  <script src="explosion.js"></script>
+  <script src="script.js"></script>
 
 </body>
 
