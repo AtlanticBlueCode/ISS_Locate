@@ -102,7 +102,7 @@ function newFrame() {
   };
 
   canvases[2].context.fillStyle = "black";
-  canvases[2].context.fillText("V 20180805-03", 10, 20);
+  canvases[2].context.fillText("V 20180805-04", 10, 20);
   canvases[2].context.fillText("Live Cannonballs:         " + cannonballs.length, 10, 50);
   canvases[2].context.fillText("Live Targets:         " + targets.length, 10, 70);
   canvases[2].context.fillText("Kills:         " + kills, 10, 100);
