@@ -3,7 +3,7 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON#Getting_s
 */
 
 var ISS_Location;
-var ISS_URL = 'https://api.open-notify.org/iss-now.json';
+var ISS_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
 
 var PlotInterval = 1*10*1000;
 var LabelInterval = PlotInterval;
@@ -35,7 +35,7 @@ function init_Map() {
 //initMap();
 
 function plot_Marker() {
-  var LatLng_ISS = new google.maps.LatLng(ISS_Location.iss_position.latitude, ISS_Location.iss_position.longitude);
+  var LatLng_ISS = new google.maps.LatLng(ISS_Location.latitude, ISS_Location.longitude);
   var marker = new google.maps.Marker({
     map: map,   // Indicação do Map ao qual se quer adicionar os Markers (neste caso é o Object "map" que criei acima)
     animation: google.maps.Animation.DROP,
@@ -48,7 +48,7 @@ function plot_Marker() {
 
 
 function plot_Label_1() {
-  var LatLng_ISS = new google.maps.LatLng(ISS_Location.iss_position.latitude, ISS_Location.iss_position.longitude);
+  var LatLng_ISS = new google.maps.LatLng(ISS_Location.latitude, ISS_Location.longitude);
   var infoWindow_1 = new google.maps.InfoWindow({
     map: map,  // Indicação do Map ao qual se quer adicionar os Markers (neste caso é o Object "map" que criei acima)
     content: "ISS@" + new Date().toLocaleTimeString(),
@@ -58,7 +58,7 @@ function plot_Label_1() {
 }
   
 function plot_Label() {
-  var LatLng_ISS = new google.maps.LatLng(ISS_Location.iss_position.latitude, ISS_Location.iss_position.longitude);
+  var LatLng_ISS = new google.maps.LatLng(ISS_Location.latitude, ISS_Location.longitude);
   infoWindow = new google.maps.InfoWindow({
   map: map,  // Indicação do Map ao qual se quer adicionar os Markers (neste caso é o Object "map" que criei acima)
   content: "ISS@" + new Date().toLocaleTimeString(),
@@ -70,7 +70,7 @@ function plot_Label() {
 }
 
 function update_Label() {
-  var LatLng_ISS = new google.maps.LatLng(ISS_Location.iss_position.latitude, ISS_Location.iss_position.longitude);
+  var LatLng_ISS = new google.maps.LatLng(ISS_Location.latitude, ISS_Location.longitude);
   infoWindow.setPosition(LatLng_ISS);
   infoWindow.setContent("ISS@" + new Date().toLocaleTimeString());
   }
