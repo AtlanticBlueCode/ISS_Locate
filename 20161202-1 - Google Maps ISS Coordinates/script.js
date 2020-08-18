@@ -3,7 +3,7 @@ https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON#Getting_s
 */
 
 var ISS_Location;
-var ISS_URL = 'http://api.open-notify.org/iss-now.json';
+var ISS_URL = 'https://api.open-notify.org/iss-now.json';
 
 var PlotInterval = 1*10*1000;
 var LabelInterval = PlotInterval;
