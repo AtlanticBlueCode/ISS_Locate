@@ -1,5 +1,4 @@
 
-// Funcao geradora de cores aleatorias
 var utils = {
 
     getRandomColorHEX: function () {            // Funcao geradora de cores aleatorias em HEX
