@@ -15,7 +15,8 @@ function initialize() {
 
 // Add Sockets
 //let socket = io.connect("http://localhost:3000");
-  let socket = io.connect("https://185.199.108.153:80");
+//let socket = io.connect("https://185.199.108.153:80");
+  var socket = io.connect(window.location.origin);
 
 
 function ownDrawing(){

@@ -1,17 +1,18 @@
 
 
 const express = require('express');
+const socket = require('socket.io');
+const http = require('http');
+
 const app = express();
+const server = http.Server(app);
+const io = socket(server); // Attach socket.io to our server
 
-//const server = app.listen(3000);
-  const server = app.listen(80);
-  
-app.use(express.static('public'));
-
+app.use(express.static('public')); // Serve our static assets from /public
 console.log("My Socket Server Is Running");
 
-const socket = require('socket.io');
-const io = socket(server);
+server.listen(3000, () => console.log('server started'));
+
 
 io.sockets.on('connection', newConnection);
 
