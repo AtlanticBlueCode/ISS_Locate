@@ -15,7 +15,7 @@ function initialize() {
 
 // Add Sockets
 //let socket = io.connect("http://localhost:3000");
-  let socket = io.connect("https://wesfar.com/20200824-1%20-%20NodeJS%20and%20Sockets:80");
+  let socket = io.connect("https://wesfar.com/20200824-1%20-%20NodeJS%20and%20Sockets/:80");
 
 
 function ownDrawing(){
