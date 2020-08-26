@@ -13,7 +13,7 @@ const io = socket(server); // Attach socket.io to our server
 app.use(express.static('public')); // Serve our static assets from /public
 console.log("My Socket Server Is Running");
 
-server.listen(3000, () => console.log('server started'));
+server.listen(3000, () => console.log('Server started'));
 
 
 io.sockets.on('connection', newConnection);

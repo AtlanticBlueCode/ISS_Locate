@@ -1,0 +1,11 @@
+{
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "explorer.confirmDelete": false,
+    "git.enableSmartCommit": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.fullReload": true,
+    "liveServer.settings.host": "localhost",
+    "liveServer.settings.port": 3000,
+    "liveServer.settings.ChromeDebuggingAttachment": false
+}
