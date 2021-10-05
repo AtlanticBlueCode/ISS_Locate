@@ -181,8 +181,8 @@ a:active {
           
           font-size: 12px;
 
-          height: 120px;
-          width: 120px;
+          height: 130px;
+          width: 130px;
 
         }
 
@@ -193,7 +193,7 @@ a:active {
           align-items: center; /* align text vertical */
 
           text-align: center;
-          background-color: rgb(150, 0, 0);
+          background-color: rgb(241, 9, 9);
           color: white;
           border-radius: 5px;
           padding: 5px;
@@ -201,8 +201,8 @@ a:active {
           
           font-size: 12px;
 
-          height: 120px;
-          width: 120px;
+          height: 130px;
+          width: 130px;
 
         }
 
