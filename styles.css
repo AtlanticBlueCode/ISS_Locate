@@ -186,6 +186,26 @@ a:active {
 
         }
 
+        .project_box_red{
+          border:1px solid black;
+          display: flex;
+          justify-content: center;
+          align-items: center; /* align text vertical */
+
+          text-align: center;
+          background-color: rgb(150, 0, 0);
+          color: white;
+          border-radius: 5px;
+          padding: 5px;
+          margin:0px 5px 10px 5px;
+          
+          font-size: 12px;
+
+          height: 120px;
+          width: 120px;
+
+        }
+
   .contact {
     grid-area: contact;
 
