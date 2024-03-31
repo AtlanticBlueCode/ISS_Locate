@@ -2,7 +2,7 @@
 
 // Constants
 const ISS_URL = 'https://api.wheretheiss.at/v1/satellites/25544';
-const PLOT_INTERVAL = 1000; // 1 seconds
+const PLOT_INTERVAL = 2000; // 1 seconds
 
 var map;
 
