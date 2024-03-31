@@ -15,6 +15,7 @@ function initMap() {
     center: { lat: 0.0, lng: 0.0 },
     mapTypeId: 'terrain',
     mapId: 'DEMO_MAP_ID', // Map ID is required for advanced markers
+    
   });
 
   // Fetch ISS data and plot marker initially
