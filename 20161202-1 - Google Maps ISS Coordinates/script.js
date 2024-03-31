@@ -1,7 +1,9 @@
 // Improved ISS Tracker Code
 
 // Constants
-const ISS_URL = 'http://api.open-notify.org/iss-now.json?key=ZRlcJrbb0wvyApa0QdayeQuweYmeYaSGrafFRePK';
+// const ISS_URL = 'http://api.open-notify.org/iss-now.json?key=ZRlcJrbb0wvyApa0QdayeQuweYmeYaSGrafFRePK';  --- Doesn't work on wesfar.com because it is not an HTTPS site.. its HTTP...
+const ISS_URL = 'https://api.wheretheiss.at/v1/satellites/25544'
+
 const PLOT_INTERVAL = 2000; // 1 seconds
 let firstPlot = true;
 
@@ -15,7 +17,7 @@ function initMap() {
     center: { lat: 0.0, lng: 0.0 },
     mapTypeId: 'terrain',
     mapId: 'DEMO_MAP_ID', // Map ID is required for advanced markers
-    
+
   });
 
   // Fetch ISS data and plot marker initially
@@ -30,8 +32,8 @@ async function fetchISSPosition(map){
 
     // Extract latitude and longitude to ISS_Location variable
     const ISS_Location = {
-      latitude: parseFloat(data.iss_position.latitude), 
-      longitude: parseFloat(data.iss_position.longitude)
+      latitude: parseFloat(data.latitude), 
+      longitude: parseFloat(data.longitude)
     };
 
     // Print the results
