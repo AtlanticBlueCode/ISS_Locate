@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISS Locator</title>
 
-	<style type="text/css">
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-	#map {
-		height: 100%;
-	}
-      /* Optional: Makes the sample page fill the window. */
-	html, body {
-		height: 100%;
-		margin: 0;
-		padding: 0;
-	}
+    <style type="text/css">
+        /* Set the map height to 100% of the viewport height */
+        #map {
+            height: 100vh;
+        }
+        /* Optional: Remove any margin or padding from the body */
+        body {
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
 
-<!--O elemento "canvas"" tem que ser criado no HTML antes do "script" ser criado/corrido-->
-<!--Desta forma quando o "script" correr o canvas já lá está disponível-->
-<!--Todos devem ficar dentro do Body-->
+	<div id="map"></div>
 
-<div id="map"></div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfN4zINoEwbpmp6sHCW73hFBCD3KK86sQ&callback=initMap" async defer></script>
-<script type="text/javascript" src="utils.js"></script>
-<script type="text/javascript" src="script.js"></script>
+	<!-- Include your scripts here -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfN4zINoEwbpmp6sHCW73hFBCD3KK86sQ&callback=initMap" async defer></script>
+	<script type="text/javascript" src="utils.js"></script>
+	<script type="text/javascript" src="script.js"></script>
 
 </body>
 </html>
